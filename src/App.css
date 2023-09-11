@@ -1,6 +1,3 @@
-.App {
-  text-align: center;
-}
 
 * {
   margin: 0;
@@ -34,8 +31,8 @@ ul li {
 @font-face {
   font-family: "StratosSkyeng";
   src: local("StratosSkyeng"), local("StratosSkyeng"),
-    url("./public/fonts/StratosSkyeng.woff2") format("woff2"),
-    url("./public/fonts/StratosSkyeng.woff") format("woff");
+    url("../public/fonts/StratosSkyeng.woff2") format("woff2"),
+    url("../public/fonts/StratosSkyeng.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -114,7 +111,7 @@ body {
   padding: 20px 0 20px 36px;
 }
 
-.main__centerblock {
+.main__centerBlock {
   width: auto;
   -webkit-box-flex: 3;
   -ms-flex-positive: 3;
@@ -171,11 +168,13 @@ body {
 
 .menu__list {
   padding: 18px 0 10px 0;
+  
 }
 
 .menu__item {
   padding: 5px 0;
-  margin-bottom: 16px;
+  margin-bottom: 26px;
+ 
 }
 
 .menu__link {
@@ -185,7 +184,7 @@ body {
   line-height: 24px;
 }
 
-.centerblock__search {
+.centerBlock__search {
   width: 100%;
   border-bottom: 1px solid #4e4e4e;
   margin-bottom: 51px;
@@ -201,16 +200,17 @@ body {
   align-items: center;
 }
 
-.centerblock__h2 {
+.centerBlock__h2 {
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
   line-height: 72px;
   letter-spacing: -0.8px;
   margin-bottom: 45px;
+  padding-right: 930px;
 }
 
-.centerblock__filter {
+.centerBlock__filter {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -224,7 +224,7 @@ body {
   margin-bottom: 51px;
 }
 
-.centerblock__content {
+.centerBlock__content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -560,6 +560,8 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  margin-top: 70px;
+  
 }
 
 .sidebar__item {
@@ -570,11 +572,11 @@ body {
 .sidebar__item:not(:last-child) {
   margin-bottom: 30px;
 }
-
+/* 
 .sidebar__link {
   width: 100%;
   height: 100%;
-}
+} */
 
 .sidebar__img {
   width: 100%;
