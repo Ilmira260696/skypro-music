@@ -1,4 +1,4 @@
-import "./search.css"
+import "./Search.css"
 function Seach() {
     return(
         <div className="main__centerBlock centerBlock">
