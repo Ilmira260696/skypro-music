@@ -1,11 +1,11 @@
 import "./App.css";
-
-import Filters from "./components/Filters/Filters";
-import Search from "./components/Search/Search"
-import TrackList from "./components/TrackList/TrackList";
-import SideBar from "./components/Sidebar/Sidebar";
-import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
-import NavMenu from "./components/NavMenu/NavMenu";
+import React from "react";
+import Filters from "./components/Filters/Filters"
+import Search from "./components/Search/Search.jsx";
+import TrackList from "./components/TrackList/TrackList.jsx";
+import SideBar from "./components/Sidebar/Sidebar.jsx";
+import AudioPlayer from "./components/AudioPlayer/AudioPlayer.jsx";
+import NavMenu from "./components/NavMenu/NavMenu.jsx";
 
 function App() {
   return (
@@ -13,9 +13,9 @@ function App() {
       <div className="wrapper">
         <div className="container">
           <main className="main">
-          <NavMenu/>
+            <NavMenu />
             <div className="main__centerBlock centerBlock">
-          <Search/>
+              <Search />
 
               <h2 className="centerBlock__h2">Треки</h2>
               <Filters />

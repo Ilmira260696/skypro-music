@@ -1,4 +1,5 @@
 import "./Filters.css"
+import React from "react";
 function Filters() {
   return (
     <div className="centerBlock__filter filter">

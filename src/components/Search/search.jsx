@@ -1,4 +1,5 @@
 import "./Search.css"
+import React from "react";
 function Seach() {
     return(
         <div className="main__centerBlock centerBlock">

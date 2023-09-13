@@ -1,4 +1,5 @@
 import "./Sidebar.css"
+import React from "react";
 function SideBar (){
     return(
         <div className="main__sidebar sidebar">
