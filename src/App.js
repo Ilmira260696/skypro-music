@@ -1,11 +1,11 @@
 import "./App.css";
 import React from "react";
-import Filters from "./components/Filters/Filters"
-import Search from "./components/Search/Search.jsx";
-import TrackList from "./components/TrackList/TrackList.jsx";
-import SideBar from "./components/Sidebar/Sidebar.jsx";
-import AudioPlayer from "./components/AudioPlayer/AudioPlayer.jsx";
-import NavMenu from "./components/NavMenu/NavMenu.jsx";
+import Filters from "./components/Filters/Filters";
+import Search from "./components/Search/Search";
+import TrackList from "./components/TrackList/TrackList";
+import SideBar from "./components/Sidebar/Sidebar";
+import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
+import NavMenu from "./components/NavMenu/NavMenu";
 
 function App() {
   return (
