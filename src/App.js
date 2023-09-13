@@ -1,35 +1,25 @@
-import "./App.css";
-
-import Filters from "./components/Filters/Filters";
-import Search from "./components/Search/Search"
-import TrackList from "./components/TrackList/TrackList";
-import SideBar from "./components/Sidebar/Sidebar";
-import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
-import NavMenu from "./components/NavMenu/NavMenu";
+import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <div className="wrapper">
-        <div className="container">
-          <main className="main">
-          <NavMenu/>
-            <div className="main__centerBlock centerBlock">
-          <Search/>
-
-              <h2 className="centerBlock__h2">Треки</h2>
-              <Filters />
-              <TrackList />
-            </div>
-            <SideBar />
-          </main>
-
-          <AudioPlayer />
-        </div>
-        <footer className="footer"></footer>
-      </div>
-    </div>
-  );
+      <header className="App-header">
+      <div className="style">Здесь скоро будет Skypro.Music</div>
+{/* //         <img src={logo} className="App-logo" alt="logo" />
+//         <p>
+//           Edit <code>src/App.js</code> and save to reload.
+//         </p>
+//         <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a> */}
+ </header>
+ </div>
+ );
 }
 
-export default App;
+ export default App;
