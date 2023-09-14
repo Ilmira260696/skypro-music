@@ -19,12 +19,10 @@ function App() {
               <Search />
 <Filters/>
               <h2 className="centerBlock__h2">Треки</h2>
-            
               <TrackList />
             </div>
             <SideBar />
           </main>
-
           <AudioPlayer />
         </div>
         <footer className="footer"></footer>
