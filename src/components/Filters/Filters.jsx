@@ -1,6 +1,7 @@
 import "./Filters.css"
 import React from "react";
 function Filters() {
+  const [visible, setVisible] = useState(true);
   return (
     <div className="centerBlock__filter filter">
       <div className="filter__title">Искать по:</div>
