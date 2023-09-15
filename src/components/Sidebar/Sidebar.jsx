@@ -1,7 +1,7 @@
 import "./Sidebar.css"
 import React from "react";
 
-function SideBar (){
+function SideBar ({loading}){
     return(
         <div className="main__sidebar sidebar">
         <div className="sidebar__personal">
@@ -43,4 +43,4 @@ function SideBar (){
       </div>
     )
 }
-export default SideBar;
+export default SideBar ;

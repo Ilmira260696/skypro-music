@@ -1,6 +1,6 @@
 import "./AudioPlayer.css"
 import React from "react";
-function AudioPlayer () {
+function AudioPlayer ({loading}) {
     return (
         <div className="bar">
         <div className="bar__content">
@@ -42,16 +42,24 @@ function AudioPlayer () {
                       <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
                     </svg>
                   </div>
+                  {loading ? (
                   <div className="track-play__author">
                     <a className="track-play__author-link" href="http://">
                       Ты та...
                     </a>
                   </div>
+                  ) :(
+                    <div className="skeleton"></div>
+                  )}
+                  {loading ? (
                   <div className="track-play__album">
                     <a className="track-play__album-link" href="http://">
                       Баста
                     </a>
                   </div>
+                  ) :(
+                    <div className="skeleton"></div>
+                  )}
                 </div>
 
                 <div className="track-play__like-dis">
