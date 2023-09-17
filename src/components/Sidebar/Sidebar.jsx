@@ -1,46 +1,32 @@
-import "./Sidebar.css"
 import React from "react";
+import "./Sidebar.css";
+import { SidebarObjects } from "../SidebarObjects/SidebarObjects";
 
-function SideBar ({loading}){
-    return(
-        <div className="main__sidebar sidebar">
-        <div className="sidebar__personal">
-          <p className="sidebar__personal-name">Sergey.Ivanov</p>
-          <div className="sidebar__icon">
-            <svg alt="logout">
-              <use xlinkHref="img/icon/sprite.svg#logout"></use>
-            </svg>
-          </div>
-        </div>
-        <div className="sidebar__block">
-          <div className="sidebar__list">
-            <div className="sidebar__item">
-              <button className="sidebar__link" href="#"></button>
-              <img
-                className="sidebar__img"
-                src="../img/playlist01.png"
-                alt="day's playlist"
-              />
-            </div>
-            <div className="sidebar__item">
-              <button className="sidebar__link" href="#"></button>
-              <img
-                className="sidebar__img"
-                src="../img/playlist02.png"
-                alt="day's playlist"
-              />
-            </div>
-            <div className="sidebar__item">
-              <button className="sidebar__link" href="#"></button>
-              <img
-                className="sidebar__img"
-                src="../img/playlist03.png"
-                alt="day's playlist"
-              />
-            </div>
-          </div>
+function SideBar({ loading }) {
+  return (
+    <div className="main__sidebar sidebar">
+      <div className="sidebar__personal">
+        <p className="sidebar__personal-name">Sergey.Ivanov</p>
+        <div className="sidebar__icon">
+          <svg alt="logout">
+            <use xlinkHref="img/icon/sprite.svg#logout"></use>
+          </svg>
         </div>
       </div>
-    )
-}
-export default SideBar ;
+      <div className="sidebar__block">
+        <div className="sidebar__list">
+      <SidebarObjects
+       item={{ link: "#", img: "img/playlist01.png", loading: loading }}
+       />
+      <SidebarObjects
+         item={{ link: "#", img: "img/playlist02.png", loading: loading }}
+       />
+       <SidebarObjects
+         item={{ link: "#", img: "img/playlist03.png", loading: loading }}
+       />
+     </div>
+   </div>
+ </div>
+);
+  }
+export default SideBar;

@@ -1,5 +1,6 @@
-import "./Search.css"
 import React from "react";
+import "./Search.css"
+
 
 function Seach() {
     return(

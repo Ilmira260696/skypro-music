@@ -7,6 +7,7 @@ import SideBar from "./components/Sidebar/Sidebar";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 import NavMenu from "./components/NavMenu/NavMenu";
 import Filters from "./components/Filters/Filters";
+import TrackListTitle from "./components/TrackListTitle/TrackListTitle";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -21,8 +22,6 @@ function App() {
   },
   [loading])
   
-
-
   return (
     <div className="App">
       <div className="wrapper">
@@ -33,6 +32,7 @@ function App() {
               <Search />
 <Filters/>
               <h2 className="centerBlock__h2">Треки</h2>
+              <TrackListTitle loading={loading} />
               <TrackList loading={loading} />
             </div>
             <SideBar loading={loading} />
