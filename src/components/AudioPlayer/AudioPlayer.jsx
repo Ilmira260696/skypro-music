@@ -44,12 +44,14 @@ function AudioPlayer ({loading}) {
                   </div>
                   {loading ? (
                   <div className="track-play__author">
+                 
                     <a className="track-play__author-link" href="http://">
                       Ты та...
                     </a>
+                    
                   </div>
                   ) :(
-                    <div className="skeleton"></div>
+                    <div className="skeleton__player"></div>
                   )}
                   {loading ? (
                   <div className="track-play__album">
@@ -58,7 +60,7 @@ function AudioPlayer ({loading}) {
                     </a>
                   </div>
                   ) :(
-                    <div className="skeleton"></div>
+                    <div className="skeleton__player"></div>
                   )}
                 </div>
 

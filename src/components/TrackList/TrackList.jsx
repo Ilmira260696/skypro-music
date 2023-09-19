@@ -35,7 +35,7 @@ function Tracks({loading}) {
               </a>
             </div>
                 ) : (
-                  <div className="skeleton"> </div>)}
+                  <div className="skeleton__author"> </div>)}
               
 
             {loading ? (
