@@ -1,11 +1,12 @@
 import "./AudioPlayer.css"
 import React from "react";
+import *as S  from "./AudioPlayerStyle"
 function AudioPlayer ({loading}) {
     return (
-        <div className="bar">
-        <div className="bar__content">
-          <div className="bar__player-progress"></div>
-          <div className="bar__player-block">
+        <S.Bar>
+       <S.BarContent> 
+        <S.BarPlayerProgress></S.BarPlayerProgress>
+         <S.BarPlayerBlock>
             <div className="bar__player player">
               <div className="player__controls">
                 <div className="player__btn-prev">
@@ -96,10 +97,10 @@ function AudioPlayer ({loading}) {
               </div>
             </div>
            
-          </div>
+            </S.BarPlayerBlock>
           
-        </div>
-      </div>
+          </S.BarContent>
+      </S.Bar>
     )
 }
 export default AudioPlayer;

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "./Filters.css"
+import *as S  from "./FiltersStyle"
 import ArrTracks from "../../ArrTracks/ArrTracks"
 import {TracksFilterCategory} from "../TracksFilterCategory/TrackFilterCategory";
 
@@ -9,8 +9,8 @@ import {TracksFilterCategory} from "../TracksFilterCategory/TrackFilterCategory"
 function Filters() {
  const [CategoryFilter, setCategoryFilter] = useState("");
   return (
-    <div className="centerBlock__filter filter">
-      <div className="filter__title">Искать по:</div>
+    <S.CenterBlockFilter>
+      <S.FilterTitle>Искать по:</S.FilterTitle>
   <TracksFilterCategory 
       nameCategory="исполнителю"
       content = {ArrTracks.map((track) =>(
@@ -41,7 +41,7 @@ function Filters() {
         </li>
       ))}
     />
-  </div>
+ </S.CenterBlockFilter>
 );
 }
 export default Filters;

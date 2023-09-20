@@ -1,6 +1,7 @@
-import "./App.css";
 import React from "react";
-import {useState, useEffect} from "react";
+import "./App.css";
+import { useState, useEffect } from "react";
+import *as S  from './AppStyle'
 import Search from "./components/Search/Search";
 import TrackList from "./components/TrackList/TrackList";
 import SideBar from "./components/Sidebar/Sidebar";
@@ -11,7 +12,7 @@ import TrackListTitle from "./components/TrackListTitle/TrackListTitle";
 
 function App() {
   const [loading, setLoading] = useState(false);
-  useEffect (() => {
+  useEffect(() => {
     if (!loading) {
       const timer = setTimeout(() => {
         setLoading(true);
@@ -19,29 +20,30 @@ function App() {
 
       return () => clearTimeout(timer);
     }
-  },
-  [loading])
-  
+  }, [loading]);
+
   return (
     <div className="App">
-      <div className="wrapper">
-        <div className="container">
-          <main className="main">
+      <S.wrapper>
+       <S.container>
+        <S.main>
             <NavMenu />
             <div className="main__centerBlock centerBlock">
               <Search />
-<Filters/>
+              <Filters />
               <h2 className="centerBlock__h2">Треки</h2>
               <TrackListTitle loading={loading} />
               <TrackList loading={loading} />
             </div>
             <SideBar loading={loading} />
-          </main>
+            </S.main>
           <AudioPlayer loading={loading} />
-        </div>
+          </S.container>
         <footer className="footer"></footer>
+      
+        </S.wrapper>
       </div>
-    </div>
+   
   );
 }
 
