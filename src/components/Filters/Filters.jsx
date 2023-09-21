@@ -14,9 +14,9 @@ function Filters() {
   <TracksFilterCategory 
       nameCategory="исполнителю"
       content = {ArrTracks.map((track) =>(
-          <li key={track.id} className="filter__item">
+          <S.FilterItem key={track.id} >
           {track.trackAuthor}
-        </li>
+        </S.FilterItem>
       ))}
       isActiveCategory={CategoryFilter}
       setActiveCategory={setCategoryFilter}
@@ -26,9 +26,9 @@ function Filters() {
       isActiveCategory={CategoryFilter}
       setActiveCategory={setCategoryFilter}
       content = {ArrTracks.map((track) =>(
-      <li key={track.id} className="filter__item">
+      <S.FilterItem key={track.id} >
          {track.year}
-        </li>
+        </S.FilterItem>
       ))}
       />
        <TracksFilterCategory 
@@ -36,9 +36,9 @@ function Filters() {
        isActiveCategory={CategoryFilter}
       setActiveCategory={setCategoryFilter}
       content={ArrTracks.map((track) => (
-        <li key={track.id} className="filter__item">
+        <S.FilterItem key={track.id} >
           {track.genre}
-        </li>
+        </S.FilterItem>
       ))}
     />
  </S.CenterBlockFilter>

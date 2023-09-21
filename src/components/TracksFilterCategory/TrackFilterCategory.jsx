@@ -1,5 +1,5 @@
 import React from "react";
-import "./TracksFilterCategory.css"
+import *as S  from "./TracksFilterCategoryStyle"
 
   export function TracksFilterCategory({
   nameCategory,
@@ -11,23 +11,23 @@ import "./TracksFilterCategory.css"
     setActiveCategory(isActiveCategory === nameCategory ? "" : nameCategory);
 
   return (
-    <div className="filter__category-name">
-      <button
+   <S.FilterCategoryName>
+      <S.FilterButton
         type="button"
         onClick={InstallСategoryFilter}
         className={
           isActiveCategory === nameCategory
-            ? "filter__button btn_active"
-            : "filter__button _btn-text"
+            ? <S.FilterButtonActive></S.FilterButtonActive>
+            : <S.FilterButtonText></S.FilterButtonText>
         }
       >
         {nameCategory}
-      </button>
+      </S.FilterButton>
       {isActiveCategory === nameCategory && (
-        <div className="filter__category-menu">
-          <ul className="filter__list">{content}</ul>
-        </div>
+       <S.FilterCategoryMenu>
+          <S.FilterList>{content}</S.FilterList>
+          </S.FilterCategoryMenu>
       )}
-    </div>
+    </S.FilterCategoryName>
   );
 }

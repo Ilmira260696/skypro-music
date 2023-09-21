@@ -1,66 +1,66 @@
 import React from "react";
-import "./TrackList.css";
+import *as S  from "./TrackListStyle"
 import ArrTracks from "../../ArrTracks/ArrTracks"
 
 
 function Tracks({loading}) {
   const trackItems = ArrTracks.map((track) => (
-        <div key={track.id} className="playlist__item">
-          <div className="playlist__track track">
-            <div className="track__title">
-              <div className="track__title-image">
-                <svg className="track__title-svg" alt="music">
+        <S.PlaylistItem key={track.id} className="playlist__item">
+          <S.PlaylistTrack>
+            <S.TrackTitle>
+             <S.TrackTitleImg>
+                <S.TrackTitleSvg alt="music">
                   <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                </svg>
-              </div>
+                </S.TrackTitleSvg>
+                </S.TrackTitleImg>
               {loading ? (
               <div className="track__title-text">
-                <a className="track__title-link" href="http://">
+                <S.TrackListTitleLink href="http://">
                  {track.trackName}
                  {track.remix ? (
-                  <span className="track__title-span">({track.remix})</span>
+                  <S.TrackTitleSpan>({track.remix})</S.TrackTitleSpan>
                   ) : (
                     ""
                   )}
-                </a>
+                </S.TrackListTitleLink>
               </div>
                ) : (
-                <div className="skeleton"> </div>
+                <S.Skeleton> </S.Skeleton>
               )}
-            </div>
+           </S.TrackTitle>
             {loading ? (
-            <div className="track__author">
-              <a className="track__author-link" href="http://">
+          <S.TrackAuthor>
+              <S.TrackAuthorLink href="http://">
               {track.trackAuthor}
-              </a>
-            </div>
+              </S.TrackAuthorLink>
+              </S.TrackAuthor>
                 ) : (
-                  <div className="skeleton__author"> </div>)}
+                  <S.SkeletonAuthor> </S.SkeletonAuthor>)}
               
 
             {loading ? (
-            <div className="track__album">
-              <a className="track__album-link" href="http://">
+           <S.TrackAlbum>
+              <S.TrackAlbumLink href="http://">
                {track.trackAlbum}
-              </a>
-            </div>
+              </S.TrackAlbumLink>
+              </S.TrackAlbum>
             ) : 
-              (<div className="skeleton skeleton__album"> </div>)}
+              (<S.SkeletonAlbum> </S.SkeletonAlbum>)}
            
           
             <div className="track__time">
-              <svg className="track__time-svg" alt="time">
+              <S.TrackTimeSvg alt="time">
                 <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-              </svg>
-              <span className="track__time-text">{track.trackTime}</span>
+              </S.TrackTimeSvg>
+              <S.TrackTimeText>{track.trackTime}</S.TrackTimeText>
             </div>
              
-          </div>
-        </div>
+            </S.PlaylistTrack>
+      </S.PlaylistItem>
           )
           );
           
-          return <ul className="content__playlist playlist">{trackItems}</ul>;
+          return <S.ContentPlaylist>{trackItems}</S.ContentPlaylist>;
           
         }
      

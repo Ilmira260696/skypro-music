@@ -15,7 +15,7 @@ body {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
-  html,
+html,
 body {
   width: 100%;
   height: 100%;
@@ -50,6 +50,10 @@ a,
 a:visited {
   text-decoration: none;
   font-family: "StratosSkyeng", sans-serif;
+  cursor: pointer;
+}
+button,
+._btn {
   cursor: pointer;
 }
 `;

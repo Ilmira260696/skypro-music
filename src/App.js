@@ -28,19 +28,18 @@ function App() {
        <S.container>
         <S.main>
             <NavMenu />
-            <div className="main__centerBlock centerBlock">
+           <S.MainCenterBlock>
               <Search />
               <Filters />
-              <h2 className="centerBlock__h2">Треки</h2>
+             <S.CenterBlockH2>Треки</S.CenterBlockH2>
               <TrackListTitle loading={loading} />
               <TrackList loading={loading} />
-            </div>
+              </S.MainCenterBlock>
             <SideBar loading={loading} />
             </S.main>
           <AudioPlayer loading={loading} />
           </S.container>
         <footer className="footer"></footer>
-      
         </S.wrapper>
       </div>
    

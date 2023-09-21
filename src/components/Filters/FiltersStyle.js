@@ -22,3 +22,18 @@ font-size: 16px;
 line-height: 24px;
 margin-right: 15px;
 `;
+export const FilterItem =styled.li `
+font-family: "StratosSkyeng", sans-serif;
+color: #fff;
+font-variant-numeric: lining-nums proportional-nums;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 120% */
+
+&::hover {
+    color: #b672ff;
+    text-decoration-line: underline;
+    cursor: pointer;
+  }
+`;

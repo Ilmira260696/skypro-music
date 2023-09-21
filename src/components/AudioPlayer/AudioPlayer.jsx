@@ -7,13 +7,13 @@ function AudioPlayer ({loading}) {
        <S.BarContent> 
         <S.BarPlayerProgress></S.BarPlayerProgress>
          <S.BarPlayerBlock>
-            <div className="bar__player player">
-              <div className="player__controls">
-                <div className="player__btn-prev">
+          <S.BarPlayerPlayer>
+              <S.PlayerControls>
+               <S.PlayerBtnPrev>
                   <svg className="player__btn-prev-svg" alt="prev">
                     <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
                   </svg>
-                </div>
+                  </S.PlayerBtnPrev>
                 <div className="player__btn-play _btn">
                   <svg className="player__btn-play-svg" alt="play">
                     <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
@@ -34,7 +34,7 @@ function AudioPlayer ({loading}) {
                     <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
                   </svg>
                 </div>
-              </div>
+                </S.PlayerControls>
 
               <div className="player__track-play track-play">
                 <div className="track-play__contain">
@@ -52,7 +52,7 @@ function AudioPlayer ({loading}) {
                     
                   </div>
                   ) :(
-                    <div className="skeleton__player"></div>
+                    <S.SkeletonPlayer></S.SkeletonPlayer>
                   )}
                   {loading ? (
                   <div className="track-play__album">
@@ -61,7 +61,7 @@ function AudioPlayer ({loading}) {
                     </a>
                   </div>
                   ) :(
-                    <div className="skeleton__player"></div>
+                    <S.SkeletonPlayer></S.SkeletonPlayer>
                   )}
                 </div>
 
@@ -78,7 +78,7 @@ function AudioPlayer ({loading}) {
                   </div>
                 </div>
               </div>
-            </div>
+              </S.BarPlayerPlayer>
         
             <div className="bar__volume-block volume">
               <div className="volume__content">

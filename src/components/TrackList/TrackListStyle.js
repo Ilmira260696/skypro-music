@@ -1,4 +1,6 @@
-@keyframes blink {
+import { styled, keyframes } from "styled-components";
+
+export const animation = keyframes`{
   from {
     opacity: 1;
   }
@@ -6,60 +8,15 @@
   to {
     opacity: 0.2;
   }
-}
-.skeleton {
-   animation: blink 2s infinite alternate; 
-   background-color: #4e4e4e;
-   height: 19px;
-   width: 356px;
-   padding-right: 60px;
-     
-}
-.skeleton__album {
-    width: 100px;
-    padding-right: 264px;  
-  } 
-  
-.skeleton__author{
-width: 271px;
-height: 19px;
-animation: blink 2s infinite alternate; 
-background-color: #4e4e4e;
-padding-right: 286px;
+}`;
 
-}
-.skeleton__sidebar {
-  width: 250px;
-  height: 150px;
-  
-}
-.skeleton__player {
-  width: 59px;
-  height: 15px;
-  animation: blink 2s infinite alternate; 
-  background-color: #4e4e4e;
- 
-  }
-
-.content__playlist {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  overflow-y: auto;
-
-}
-
-.playlist__item {
+  export const PlaylistItem = styled.div `
   width: 100%;
   display: block;
   margin-bottom: 12px;
-}
+  `;
 
-.playlist__track {
+  export const PlaylistTrack = styled.div `
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -73,9 +30,9 @@ padding-right: 286px;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
+  `;
 
-.track__title {
+  export const TrackTitle = styled.div `
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -87,9 +44,9 @@ padding-right: 286px;
   -ms-flex-align: center;
   align-items: center;
   width: 447px;
-}
+  `;
 
-.track__title-image {
+  export const TrackTitleImg = styled (TrackTitle) `
   width: 51px;
   height: 51px;
   padding: 16px;
@@ -104,32 +61,32 @@ padding-right: 286px;
   -ms-flex-pack: center;
   justify-content: center;
   margin-right: 17px;
-}
+  `;
 
-.track__title-svg {
+  export const TrackTitleSvg = styled (TrackTitle) `
   width: 18px;
   height: 17px;
   fill: transparent;
   stroke: #4e4e4e;
-}
+  `;
 
-.track__title-link {
+  export const TrackListTitleLink = styled.div `
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   color: #ffffff;
-}
+  `;
 
-.track__title-span {
+  export const TrackTitleSpan = styled.span `
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   color: #4e4e4e;
-}
+  `;
 
-.track__author {
+  export const TrackAuthor = styled.div `
   width: 321px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -137,42 +94,77 @@ padding-right: 286px;
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-}
+  `;
 
-.track__author-link {
+
+  export const TrackAuthorLink = styled (TrackAuthor) `
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   color: #ffffff;
   text-align: left;
-}
+  `;
 
-.track__album {
+  export const TrackAlbum = styled.div `
   width: 245px;
-}
+  `;
 
-.track__album-link {
+  export const TrackAlbumLink = styled (TrackAlbum) `
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   color: #696969;
-}
+  `;
 
-.track__time-svg {
+  export const TrackTimeSvg = styled.svg `
   width: 14px;
   height: 12px;
   margin-right: 17px;
   fill: transparent;
   stroke: #696969;
-}
+  `;
 
-.track__time-text {
+  export const TrackTimeText = styled.span `
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   text-align: right;
   color: #696969;
-}
+  `;
+
+  export const ContentPlaylist = styled.ul `
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow-y: auto;
+  `;
+
+  export const Skeleton = styled.div `
+  animation: blink 2s infinite alternate; 
+  background-color: #4e4e4e;
+  height: 19px;
+  width: 356px;
+  padding-right: 60px;
+  `;
+
+  export const SkeletonAuthor = styled (Skeleton) `
+  width: 271px;
+  height: 19px;
+  animation: blink 2s infinite alternate; 
+  background-color: #4e4e4e;
+  padding-right: 286px;
+  `;
+
+  export const SkeletonAlbum = styled(Skeleton) `
+  width: 100px;
+  padding-right: 264px; 
+  `;
+
+

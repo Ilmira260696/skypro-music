@@ -28,3 +28,20 @@ flex-wrap: wrap;
 -ms-flex-pack: justify;
 justify-content: space-between;
 `;
+export const CenterBlockH2 = styled.h2 `
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 72px;
+letter-spacing: -0.8px;
+margin-bottom: 45px;
+padding-right: 930px;
+`;
+
+export const MainCenterBlock = styled.div `
+width: auto;
+-webkit-box-flex: 3;
+-ms-flex-positive: 3;
+flex-grow: 3;
+padding: 20px 40px 20px 53px;
+`;
