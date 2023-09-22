@@ -23,9 +23,6 @@ color: #ffffff;
     cursor: pointer;
   }
 
-&:not(:last-child) {
-    margin-right: 10px;
-  }
 `;
 
 export const FilterButtonActive = styled(FilterButton) `

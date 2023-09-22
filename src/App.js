@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import { useState, useEffect } from "react";
 import *as S  from './AppStyle'
 import Search from "./components/Search/Search";

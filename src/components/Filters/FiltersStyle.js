@@ -12,7 +12,7 @@ flex-direction: row;
 -ms-flex-align: center;
 align-items: center;
 margin-bottom: 51px;
-gap: 10px;
+gap: 15px;
 `;
 
 export const FilterTitle = styled.div `

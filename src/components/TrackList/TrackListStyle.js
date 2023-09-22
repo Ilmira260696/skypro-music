@@ -157,8 +157,6 @@ export const animation = keyframes`{
   export const SkeletonAuthor = styled (Skeleton) `
   width: 271px;
   height: 19px;
-  animation: blink 2s infinite alternate; 
-  background-color: #4e4e4e;
   padding-right: 286px;
   `;
 

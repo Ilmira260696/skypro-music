@@ -21,4 +21,6 @@ height: auto;
 export const SkeletonSidebar = styled.div `
 width: 250px;
 height: 150px;
+animation: blink 2s infinite alternate; 
+background-color: #4e4e4e;
 `;
