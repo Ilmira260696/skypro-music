@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import *as S  from './AppStyle'
+import "./index.css";
 import Search from "./components/Search/Search";
 import TrackList from "./components/TrackList/TrackList";
 import SideBar from "./components/Sidebar/Sidebar";
