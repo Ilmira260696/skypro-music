@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+
 
 export const MainNav = styled.nav `
 width: 244px;
@@ -28,6 +29,8 @@ flex-direction: column;
 -webkit-box-pack: justify;
 -ms-flex-pack: justify;
 justify-content: space-between;
+background: none;
+border: none;
 `;
 
 export const LogoImage = styled.img `
@@ -52,14 +55,3 @@ export const MenuList = styled.ul`
 padding: 18px 0 10px 0;
 `;
 
-export const MenuLink = styled.a `
-color: #ffffff;
-font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-`;
-
-export const MenuItem = styled.li `
-padding: 5px 0;
-margin-bottom: 26px;
-`;

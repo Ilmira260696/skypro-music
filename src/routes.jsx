@@ -1,23 +1,28 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Main from "./Pages/Main/MainPage";
-// import {Login} from "./Pages/Login";
-// import {Collections} from "./Pages/Collections";
-// import {MyTracks} from "./Pages/MyTracks";
-// import {Registration} from "./Pages/Registration";
-import {NotFound} from "./Pages/NotFound/NotFound";
+import { Favorites } from "./Pages/Favorites/Favorites";
+import { Category } from "./Pages/Category/Category";
+import { NotFound } from "./Pages/NotFound/NotFound";
+import { Login } from "./Pages/Login/Login";
+import { Registration } from "./Pages/Registration/Registration";
+import {ProtectedRoute} from "./ProtectedRoute/ProtectedRoute"
 
 
+  export function AppRoutes ({user, onAuthButtonClick })  {
+  return (
+    <Routes>
+    <Route path="/Login" element={<Login onAuthButtonClick = {onAuthButtonClick}/>} />
+    <Route path="/Registration" element={<Registration />} />
 
-export const AppRoutes = () => {
-    return (
-      <Routes>
-        <Route path="/" element={<Main />} />
-        {/* <Route path="/Login" element={<Login />} />
-        <Route path="/Collections" element={<Collections />} />
-        <Route path="/MyTracks" element={<MyTracks />} />
-        <Route path="/Registration" element={<Registration />} /> */}
-        <Route path="/*" element={<NotFound />} />
-      </Routes>
-    );
-  };
+    <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
+    <Route path="/" element={<Main />} />
+    <Route path="/Category/:id" element={<Category />} />
+    <Route path="/Favorites" element={<Favorites />} />
+    </Route>
+
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+  );
+};
+
