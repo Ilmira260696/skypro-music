@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./FavoritiesStyle";
+import * as S from "./favoritiesStyle";
 
  export function Favorites () {
 return (

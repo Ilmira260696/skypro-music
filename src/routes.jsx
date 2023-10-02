@@ -1,28 +1,29 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Main from "./Pages/Main/MainPage";
-import { Favorites } from "./Pages/Favorites/Favorites";
-import { Category } from "./Pages/Category/Category";
+import Main from "./Pages/main/mainPage";
+import { Favorites } from "./Pages/favorites/favorites";
+import { Category } from "./Pages/category/category";
 import { NotFound } from "./Pages/NotFound/NotFound";
-import { Login } from "./Pages/Login/Login";
-import { Registration } from "./Pages/Registration/Registration";
-import {ProtectedRoute} from "./ProtectedRoute/ProtectedRoute"
+import { Login } from "./Pages/login/login";
+import { Registration } from "./Pages/registration/registration";
+import { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
 
-
-  export function AppRoutes ({user, onAuthButtonClick })  {
+export function AppRoutes({ user, onAuthButtonClick }) {
   return (
     <Routes>
-    <Route path="/Login" element={<Login onAuthButtonClick = {onAuthButtonClick}/>} />
-    <Route path="/Registration" element={<Registration />} />
+      <Route
+        path="/login"
+        element={<Login onAuthButtonClick={onAuthButtonClick} />}
+      />
+      <Route path="/registration" element={<Registration />} />
 
-    <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
-    <Route path="/" element={<Main />} />
-    <Route path="/Category/:id" element={<Category />} />
-    <Route path="/Favorites" element={<Favorites />} />
-    </Route>
+      <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
+        <Route path="/" element={<Main />} />
+        <Route path="/category/:id" element={<Category />} />
+        <Route path="/favorites" element={<Favorites />} />
+      </Route>
 
-    <Route path="*" element={<NotFound />} />
-  </Routes>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
-};
-
+}

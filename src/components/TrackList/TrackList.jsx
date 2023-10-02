@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import *as S  from "./TrackListStyle"
-import ArrTracks from "../../ArrTracks/ArrTracks"
-
+import { GetAllTracks } from "../../Api";
+import ArrTracks from "../../ArrTracks/ArrTracks";
 
 function Tracks({loading}) {
+
+const [tracks, setArrTracks] = useState(ArrTracks);
+
+useEffect(()=>{
+  GetAllTracks().then((ArrTracks)=>{
+    console.log(ArrTracks);
+    setArrTracks(ArrTracks);
+  } )
+},[])
   const trackItems = ArrTracks.map((track) => (
         <S.PlaylistItem key={track.id} className="playlist__item">
           <S.PlaylistTrack>
@@ -60,6 +69,8 @@ function Tracks({loading}) {
           )
           );
           
+         
+
           return <S.ContentPlaylist>{trackItems}</S.ContentPlaylist>;
           
         }
