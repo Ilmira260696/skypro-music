@@ -7,14 +7,14 @@ function Tracks({loading}) {
 
 const [tracks, setArrTracks] = useState(ArrTracks);
 
-useEffect(()=>{
-  GetAllTracks().then((ArrTracks)=>{
-    console.log(ArrTracks);
-    setArrTracks(ArrTracks);
+useEffect(() => {
+  GetAllTracks().then((ArrTrack) => {
+    console.log(ArrTrack);
+    setArrTracks(ArrTrack);
   } )
 },[])
-  const trackItems = ArrTracks.map((track) => (
-        <S.PlaylistItem key={track.id} className="playlist__item">
+  const trackItems = tracks.map((track) => (
+        <S.PlaylistItem key={track.id}>
           <S.PlaylistTrack>
             <S.TrackTitle>
              <S.TrackTitleImg>
@@ -66,14 +66,9 @@ useEffect(()=>{
              
             </S.PlaylistTrack>
       </S.PlaylistItem>
-          )
-          );
-          
-         
-
-          return <S.ContentPlaylist>{trackItems}</S.ContentPlaylist>;
-          
-        }
+          ));
+          return (<S.ContentPlaylist>{trackItems}</S.ContentPlaylist> 
+        )}
      
       export default Tracks;
        
