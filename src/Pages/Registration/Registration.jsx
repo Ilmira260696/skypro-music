@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./registrationStyle";
+import * as S from "./RegistrationStyle";
 
 
 export function Registration () {

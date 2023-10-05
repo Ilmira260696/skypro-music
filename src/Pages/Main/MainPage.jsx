@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./mainPageStyle";
+import * as S from "./MainPageStyle";
 import { useState, useEffect } from "react";
 import Search from "../../components/Search/Search";
 import TrackList from "../../components/TrackList/TrackList";

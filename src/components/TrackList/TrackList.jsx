@@ -1,10 +1,22 @@
 import React from "react";
 import *as S  from "./TrackListStyle"
 import ArrTracks from "../../ArrTracks/ArrTracks"
-
-
+import { GetAllTracks } from "../../Api";
+import { useState,  useEffect  } from "react";
 function Tracks({loading}) {
-  const trackItems = ArrTracks.map((track) => (
+
+
+  
+  GetAllTracks().then((tracks)=>console.log(tracks));
+  const [tracks, setArrTracks] = useState(ArrTracks);
+  useEffect(() => {
+    GetAllTracks().then((ArrTrack) => {
+      console.log(ArrTrack);
+      setArrTracks(ArrTrack);
+    });
+  }, []);
+
+  const trackItems = tracks.map((track) => (
         <S.PlaylistItem key={track.id} className="playlist__item">
           <S.PlaylistTrack>
             <S.TrackTitle>
@@ -16,7 +28,7 @@ function Tracks({loading}) {
               {loading ? (
               <div className="track__title-text">
                 <S.TrackListTitleLink href="http://">
-                 {track.trackName}
+                 {track.name}
                  {track.remix ? (
                   <S.TrackTitleSpan>({track.remix})</S.TrackTitleSpan>
                   ) : (
@@ -31,7 +43,7 @@ function Tracks({loading}) {
             {loading ? (
           <S.TrackAuthor>
               <S.TrackAuthorLink href="http://">
-              {track.trackAuthor}
+              {track.author}
               </S.TrackAuthorLink>
               </S.TrackAuthor>
                 ) : (
@@ -41,7 +53,7 @@ function Tracks({loading}) {
             {loading ? (
            <S.TrackAlbum>
               <S.TrackAlbumLink href="http://">
-               {track.trackAlbum}
+               {track.album}
               </S.TrackAlbumLink>
               </S.TrackAlbum>
             ) : 
@@ -52,7 +64,7 @@ function Tracks({loading}) {
               <S.TrackTimeSvg alt="time">
                 <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
               </S.TrackTimeSvg>
-              <S.TrackTimeText>{track.trackTime}</S.TrackTimeText>
+              <S.TrackTimeText>{track.time}</S.TrackTimeText>
             </div>
              
             </S.PlaylistTrack>

@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./categoryStyle";
+import * as S from "./CategoryStyle";
 import { useParams } from "react-router-dom";
 import { CategoryArr } from "../../utilits/Constans";
 

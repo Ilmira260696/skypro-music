@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./loginStyle";
+import * as S from "./LoginStyle";
 import { NavLink } from "react-router-dom";
 
 export const Login = ({ onAuthButtonClick }) => {
