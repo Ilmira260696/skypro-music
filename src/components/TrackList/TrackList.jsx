@@ -4,10 +4,10 @@ import { GetAllTracks } from "../../Api";
 import ArrTracks from "../../ArrTracks/ArrTracks";
 
 
-function Tracks({ loading, tracks,handleCurrentTrack}) {
+function Tracks({ loading, tracks}) {
   
   const trackItems = tracks.map((track) => (
-    <S.PlaylistItem   key={track.id} onClick={()=>handleCurrentTrack(track)}>
+    <S.PlaylistItem   key={track.id} >
       try {
       <S.PlaylistTrack>
         <S.TrackTitle>
@@ -59,8 +59,9 @@ function Tracks({ loading, tracks,handleCurrentTrack}) {
 }
     </S.PlaylistItem>
   ));
-  return <S.ContentPlaylist>{trackItems}</S.ContentPlaylist>;
-
+  return (
+  <S.ContentPlaylist>{trackItems}</S.ContentPlaylist>
+  )
 }
 
 export default Tracks;
