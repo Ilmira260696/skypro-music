@@ -21,10 +21,6 @@ export function PlayerTrackPlay ({ currentTrack}) {
             </S.TrackPlayLink>
             </S.TrackPlayAlbum>   
        </S.TrackPlayContain>
-
-
-
-
         <S.TrackPlayLikeDis>
          <S.TrackPlayLike>
            <S.TrackPlayLikeSvg>
