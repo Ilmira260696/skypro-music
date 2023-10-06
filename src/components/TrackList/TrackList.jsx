@@ -36,8 +36,6 @@ function Tracks({loading, tracks, handleCurrentTrack}) {
               </S.TrackAuthor>
                 ) : (
                   <S.SkeletonAuthor> </S.SkeletonAuthor>)}
-              
-
             {loading ? (
            <S.TrackAlbum>
               <S.TrackAlbumLink href="http://">
