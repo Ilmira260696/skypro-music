@@ -7,7 +7,6 @@ import { PlayerTrackPlay } from "../PlayerTrackPlay/PlayerTrackPlay";
 function AudioPlayer ({ currentTrack}) {
     return (
         <S.Bar>
-         
        <S.BarContent> 
         <S.BarPlayerProgress></S.BarPlayerProgress>
          <S.BarPlayerBlock>
@@ -15,7 +14,6 @@ function AudioPlayer ({ currentTrack}) {
             <PlayerControl />
             <PlayerTrackPlay   currentTrack={ currentTrack} />
               </S.BarPlayerPlayer>
-        
            <S.BarVolumeBlock>
               <S.VolumeContent>
                 <S.VolumeImg>

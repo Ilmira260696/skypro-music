@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const PlayerTrackPlay = styled.div `
 display: -webkit-box;
 display: -ms-flexbox;
