@@ -4,8 +4,6 @@ import *as S  from "./FiltersStyle"
 import ArrTracks from "../../ArrTracks/ArrTracks"
 import {TracksFilterCategory} from "../TracksFilterCategory/TrackFilterCategory";
 
-
-
 function Filters() {
  const [CategoryFilter, setCategoryFilter] = useState("");
   return (
