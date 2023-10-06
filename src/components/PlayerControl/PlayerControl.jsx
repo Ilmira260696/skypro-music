@@ -1,34 +1,30 @@
 import React from "react";
-import *as S  from "./PlayerControlStyle"
+import *as S  from "./PlayerControlStyle";
+import { AudioPlayerIcons } from "../AudioPlayerIcons/AudioPlayerIcons";
 
 function PlayerControl () {
     return (
         <S.PlayerControls>
-        <S.PlayerBtnPrev>
-         <S.PlayerBtnPrevSvg>
-             <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
-             </S.PlayerBtnPrevSvg>
-           </S.PlayerBtnPrev>
-       <S.PlayerBtnPlay>
-          <S.PlayerBtnPlaySvg>
-             <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
-             </S.PlayerBtnPlaySvg>
-           </S.PlayerBtnPlay>
-        <S.PlayerBtnNext>
-           <S.PlayerBtnNextSvg>
-             <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
-             </S.PlayerBtnNextSvg>
-           </S.PlayerBtnNext>
-      <S.PlayerBtnRepeat>
-           <S.PlayerBtnRepeatSvg>
-             <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
-             </S.PlayerBtnRepeatSvg>
-         </S.PlayerBtnRepeat>
-        <S.PlayerBtnShuffle>
-          <S.PlayerBtnShuffleSvg>
-             <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
-             </S.PlayerBtnShuffleSvg>
-           </S.PlayerBtnShuffle>
+        <AudioPlayerIcons
+                onClick={() => {
+                  alert("Еще не реализовано");
+                }}
+                alt="prev"
+              />
+              <AudioPlayerIcons alt="play" />
+              <AudioPlayerIcons
+                onClick={() => {
+                  alert("Еще не реализовано");
+                }}
+                alt="next"
+              />
+              <AudioPlayerIcons alt="repeat" />
+              <AudioPlayerIcons
+                onClick={() => {
+                  alert("Еще не реализовано");
+                }}
+                alt="shuffle"
+              />
          </S.PlayerControls>
     )
 }
