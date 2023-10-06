@@ -8,8 +8,21 @@ import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
 import NavMenu from "../../components/NavMenu/NavMenu";
 import Filters from "../../components/Filters/Filters";
 import TrackListTitle from "../../components/TrackListTitle/TrackListTitle";
+import { GetAllTracks } from "../../Api";
 
 function Main() {
+ 
+  const [tracks, setArrTracks] = useState([]);
+  const [currentTrack, setCurrentTrack] = useState(null);
+  const handleCurrentTrack = (track) => setCurrentTrack(track);
+  
+  useEffect(() => {
+    GetAllTracks().then((track) => {
+      console.log(track);
+      setArrTracks(track);
+    });
+  }, []);
+
     const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (!loading) {
@@ -31,11 +44,18 @@ function Main() {
               <Filters />
               <S.CenterBlockH2>Треки</S.CenterBlockH2>
               <TrackListTitle loading={loading} />
-              <TrackList loading={loading} />
+              <TrackList 
+              loading={loading}
+              tracks={tracks}
+              handleCurrentTrack={handleCurrentTrack}
+              
+               />
             </S.MainCenterBlock>
             <SideBar loading={loading} />
           </S.main>
-          <AudioPlayer loading={loading} />
+          {currentTrack && (
+          <AudioPlayer loading={loading}  currentTrack={currentTrack} />
+          )}
         </S.container>
         <footer className="footer"></footer>
       </S.wrapper>

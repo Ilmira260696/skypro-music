@@ -7,7 +7,7 @@ import { useState} from "react";
 function App() {
  
   const [user, setUser] = useState(false);
- 
+
   
   const handleLogin = () => {
     localStorage.setItem('user', 'true');
@@ -20,10 +20,8 @@ function App() {
      <AppRoutes
      user={user}
      onAuthButtonClick={handleLogin}
-
-
      />
-           </div>
+    </div>
   )
  }
   export default App;

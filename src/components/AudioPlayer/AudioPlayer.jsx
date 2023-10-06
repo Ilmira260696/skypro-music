@@ -4,23 +4,16 @@ import PlayerControl from "../PlayerControl/PlayerControl";
 import { PlayerTrackPlay } from "../PlayerTrackPlay/PlayerTrackPlay";
 
 
-function AudioPlayer ({loading,currentTrack }) {
+function AudioPlayer () {
     return (
         <S.Bar>
+         
        <S.BarContent> 
         <S.BarPlayerProgress></S.BarPlayerProgress>
          <S.BarPlayerBlock>
           <S.BarPlayerPlayer>
-
-            
             <PlayerControl />
-            <PlayerTrackPlay
-            loading={loading}
-            currentTrack={currentTrack} />
-            
-            
-          
-   
+            <PlayerTrackPlay />
               </S.BarPlayerPlayer>
         
            <S.BarVolumeBlock>

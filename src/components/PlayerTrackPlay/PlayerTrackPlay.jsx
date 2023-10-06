@@ -1,7 +1,7 @@
 import React from "react";
 import *as S  from "./PlayerTrackPlayStyle";
 
-export function PlayerTrackPlay () {
+export function PlayerTrackPlay ({loading, currentTrack}) {
     return (
         <S.PlayerTrackPlay>
         <S.TrackPlayContain>
@@ -10,27 +10,20 @@ export function PlayerTrackPlay () {
               <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
               </S.TrackPlaySvg>
             </S.TrackPlayImage>
-          {loading ? (
           <S.TrackPlayAuthor>
-         
             <S.TrackPlayAuthorLink href="http://">
-              Ты та...
+            {currentTrack.author}
             </S.TrackPlayAuthorLink>
-            
             </S.TrackPlayAuthor>
-          ) :(
-            <S.SkeletonPlayer></S.SkeletonPlayer>
-          )}
-          {loading ? (
           <S.TrackPlayAlbum>
             <S.TrackPlayLink href="http://">
-              Баста
+            {currentTrack.album}
             </S.TrackPlayLink>
-            </S.TrackPlayAlbum>
-          ) :(
-            <S.SkeletonPlayer></S.SkeletonPlayer>
-          )}
+            </S.TrackPlayAlbum>   
        </S.TrackPlayContain>
+
+
+
 
         <S.TrackPlayLikeDis>
          <S.TrackPlayLike>

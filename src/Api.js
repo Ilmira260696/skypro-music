@@ -1,14 +1,15 @@
-import React from "react";
-
 export async function GetAllTracks() {
   const response = await fetch(
-    "https://skypro-music-api.skyeng.tech/catalog/track/all/"
+    "https://skypro-music-api.skyeng.tech/catalog/track/all/",
+    {
+      method: "GET",
+    }
   );
   if (!response.ok) {
     throw new Error("Ошибка сервера");
   }
-  const tracks = await response.json();
-  return tracks;
+  const data = await response.json();
+  return data;
 }
 
 

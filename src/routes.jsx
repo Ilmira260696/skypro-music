@@ -16,7 +16,6 @@ export function AppRoutes({ user, onAuthButtonClick }) {
         element={<Login onAuthButtonClick={onAuthButtonClick} />}
       />
       <Route path="/Registration" element={<Registration />} />
-
       <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
         <Route path="/" element={<Main />} />
         <Route path="/Category/:id" element={<Category />} />

@@ -1,23 +1,11 @@
 import React from "react";
 import *as S  from "./TrackListStyle"
-import ArrTracks from "../../ArrTracks/ArrTracks"
-import { GetAllTracks } from "../../Api";
-import { useState,  useEffect  } from "react";
-function Tracks({loading}) {
 
 
-  
-  GetAllTracks().then((tracks)=>console.log(tracks));
-  const [tracks, setArrTracks] = useState(ArrTracks);
-  useEffect(() => {
-    GetAllTracks().then((ArrTrack) => {
-      console.log(ArrTrack);
-      setArrTracks(ArrTrack);
-    });
-  }, []);
-
+function Tracks({loading, tracks, handleCurrentTrack}) {
+ 
   const trackItems = tracks.map((track) => (
-        <S.PlaylistItem key={track.id} className="playlist__item">
+        <S.PlaylistItem key={track.id} onClick={() => handleCurrentTrack(track)} >
           <S.PlaylistTrack>
             <S.TrackTitle>
              <S.TrackTitleImg>
@@ -64,7 +52,15 @@ function Tracks({loading}) {
               <S.TrackTimeSvg alt="time">
                 <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
               </S.TrackTimeSvg>
-              <S.TrackTimeText>{track.time}</S.TrackTimeText>
+              <S.TrackTimeText> 
+                 {Math.floor(track.duration_in_seconds / 60) +
+                ":" +
+                (track.duration_in_seconds % 60 < 10
+                  ? (track.duration_in_seconds % 60) + "0"
+                  : track.duration_in_seconds % 60) ||
+                (track.duration_in_seconds % 60 === 0
+                  ? "00"
+                  : track.duration_in_seconds % 60)}</S.TrackTimeText>
             </div>
              
             </S.PlaylistTrack>
