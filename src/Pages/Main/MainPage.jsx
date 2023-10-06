@@ -11,19 +11,23 @@ import TrackListTitle from "../../components/TrackListTitle/TrackListTitle";
 import { GetAllTracks } from "../../Api";
 
 function Main() {
- 
+  const [loading, setLoading] = useState(false);
   const [tracks, setArrTracks] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(null);
+  const [loadingTracksError, setLoadingTracksError] = useState(null);
   const handleCurrentTrack = (track) => setCurrentTrack(track);
   
   useEffect(() => {
+  
     GetAllTracks().then((track) => {
-      console.log(track);
       setArrTracks(track);
+    })
+    .catch((error) => {
+    setLoadingTracksError(error.message);
     });
   }, []);
 
-    const [loading, setLoading] = useState(false);
+    
   useEffect(() => {
     if (!loading) {
       const timer = setTimeout(() => {
@@ -43,15 +47,21 @@ function Main() {
               <Search />
               <Filters />
               <S.CenterBlockH2>Треки</S.CenterBlockH2>
-              <TrackListTitle loading={loading} />
+              <TrackListTitle  />
+              {loadingTracksError ? (
+          <div>Не удалось загрузить плейлист, попробуйте позже</div>
+        ) : (
+
               <TrackList 
               loading={loading}
               tracks={tracks}
               handleCurrentTrack={handleCurrentTrack}
-              
+              loadingTracksError={loadingTracksError}
                />
+
+               )}
             </S.MainCenterBlock>
-            <SideBar loading={loading} />
+            <SideBar loading={loading}  loadingTracksError={loadingTracksError}/>
           </S.main>
           {currentTrack && (
           <AudioPlayer loading={loading}  currentTrack={currentTrack} />

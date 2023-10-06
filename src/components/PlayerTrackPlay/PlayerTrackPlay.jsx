@@ -1,7 +1,7 @@
 import React from "react";
 import *as S  from "./PlayerTrackPlayStyle";
 
-export function PlayerTrackPlay ({loading, currentTrack}) {
+export function PlayerTrackPlay ({ currentTrack}) {
     return (
         <S.PlayerTrackPlay>
         <S.TrackPlayContain>
@@ -12,12 +12,12 @@ export function PlayerTrackPlay ({loading, currentTrack}) {
             </S.TrackPlayImage>
           <S.TrackPlayAuthor>
             <S.TrackPlayAuthorLink href="http://">
-            {currentTrack.author}
+            {currentTrack.name}
             </S.TrackPlayAuthorLink>
             </S.TrackPlayAuthor>
           <S.TrackPlayAlbum>
             <S.TrackPlayLink href="http://">
-            {currentTrack.album}
+            {currentTrack.author}
             </S.TrackPlayLink>
             </S.TrackPlayAlbum>   
        </S.TrackPlayContain>

@@ -3,10 +3,10 @@ import * as S from "./SidebarStyle";
 import { CategoryArr } from "../../utilits/Constans";
 import { NavLink } from "react-router-dom";
 
-function SideBar({ loading }) {
+function SideBar({ loading, loadingTracksError }) {
   const FullCategory  = CategoryArr.map((category) => (
     <S.SidebarItem key={category.id}>
-      {loading ? (
+      {loading && !loadingTracksError ? (
         <NavLink to={`/Category/${category.id}`}>
           <S.SidebarImg src={category.img} alt={category.alt} />
         </NavLink>

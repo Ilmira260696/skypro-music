@@ -4,7 +4,7 @@ import PlayerControl from "../PlayerControl/PlayerControl";
 import { PlayerTrackPlay } from "../PlayerTrackPlay/PlayerTrackPlay";
 
 
-function AudioPlayer () {
+function AudioPlayer ({ currentTrack}) {
     return (
         <S.Bar>
          
@@ -13,7 +13,7 @@ function AudioPlayer () {
          <S.BarPlayerBlock>
           <S.BarPlayerPlayer>
             <PlayerControl />
-            <PlayerTrackPlay />
+            <PlayerTrackPlay   currentTrack={ currentTrack} />
               </S.BarPlayerPlayer>
         
            <S.BarVolumeBlock>
