@@ -14,7 +14,7 @@ function PlayerControl ({isPlaying,toggleTrackRepeat, repeatTrack, handleStart,h
               />
               <AudioPlayerIcons
                 alt={isPlaying ? "pause" : "play"}
-                click={togglePlay}
+                
               />
               <AudioPlayerIcons
                 alt="next"
