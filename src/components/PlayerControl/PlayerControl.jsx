@@ -2,8 +2,8 @@ import React from "react";
 import *as S  from "./PlayerControlStyle";
 import { AudioPlayerIcons } from "../AudioPlayerIcons/AudioPlayerIcons";
 
-function PlayerControl ({isPlaying,toggleTrackRepeat, repeatTrack, handleStart,handleStop}) {
-  const togglePlay = isPlaying ? handleStop : handleStart;
+function PlayerControl ({isPlaying,toggleTrackRepeat, repeatTrack, togglePlay}) {
+  
     return (
         <S.PlayerControls>
        <AudioPlayerIcons
@@ -14,7 +14,7 @@ function PlayerControl ({isPlaying,toggleTrackRepeat, repeatTrack, handleStart,h
               />
               <AudioPlayerIcons
                 alt={isPlaying ? "pause" : "play"}
-                
+             
               />
               <AudioPlayerIcons
                 alt="next"

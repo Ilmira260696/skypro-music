@@ -1,9 +1,12 @@
 import React from "react";
 import *as S  from "./AudioPlayerStyle";
-import PlayerControl from "../PlayerControl/PlayerControl";
+
 import { PlayerTrackPlay } from "../PlayerTrackPlay/PlayerTrackPlay";
 import { BarPlayerProgress } from "../BarPlayerProgress/BarPlayerProgress";
 import { useState, useEffect, useRef } from "react";
+import { PlayerControls } from "../PlayerControl/PlayerControlStyle";
+import { AudioPlayerIcons } from "../AudioPlayerIcons/AudioPlayerIcons";
+import { VolumeBlock } from "../VolumeBlock/VolumeBlock";
 
 
 function AudioPlayer ({ currentTrack}) {
@@ -21,6 +24,7 @@ function AudioPlayer ({ currentTrack}) {
     setIsPlaying(false);
   };
   const togglePlay = isPlaying ? handleStop : handleStart;
+  
   useEffect(() => {
     handleStart();
   }, [currentTrack]);
@@ -49,30 +53,40 @@ function AudioPlayer ({ currentTrack}) {
           
        <S.BarContent> 
         <BarPlayerProgress
-        duration={duration}
+          duration={duration}
           timeProgress={timeProgress}
           audioRef={audioRef}
         />
          <S.BarPlayerBlock>
           <S.BarPlayerPlayer>
-            <PlayerControl />
+          <PlayerControls>
+          <AudioPlayerIcons
+                alt="prev"
+                click={() => {
+                  alert("Еще не реализовано");
+                }}
+              />
+              <AudioPlayerIcons
+                alt={isPlaying ? "pause" : "play"}
+                click={togglePlay}
+              />
+              <AudioPlayerIcons
+                alt="next"
+                click={() => {
+                  alert("Еще не реализовано");
+                }}
+              />
+              <AudioPlayerIcons alt="repeat" click={toggleTrackRepeat} repeatTrack={repeatTrack} />
+              <AudioPlayerIcons
+                alt="shuffle"
+                click={() => {
+                  alert("Еще не реализовано");
+                }}
+              />
+         </PlayerControls>
             <PlayerTrackPlay   currentTrack={ currentTrack} />
               </S.BarPlayerPlayer>
-           <S.BarVolumeBlock>
-              <S.VolumeContent>
-                <S.VolumeImg>
-                 <S.VolumeSvg>
-                    <use xlinkHref="img/icon/sprite.svg#icon-volume"></use>
-                    </S.VolumeSvg>
-                  </S.VolumeImg>
-                <S.VolumeProgress>
-                  <S.VolumeProgressLine
-                    type="range"
-                    name="range"
-                  />
-                </S.VolumeProgress>
-                </S.VolumeContent>
-              </S.BarVolumeBlock>
+            <VolumeBlock  audioRef={audioRef}  />
            
             </S.BarPlayerBlock>
           
