@@ -36,12 +36,6 @@ margin-left: 25px;
 
 `;
 
-export const BarPlayerProgress = styled.div`
-width: 100%;
-height: 5px;
-background: #2e2e2e;
-`;
-
 export const BarPlayerBlock = styled.div`
 height: 73px;
 display: -webkit-box;
@@ -55,9 +49,6 @@ flex-direction: row;
 -ms-flex-pack: justify;
 justify-content: space-between;
 `;
-
-
-
 
 export const BarVolumeBlock = styled.div `
 width: auto;
