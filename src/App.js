@@ -1,25 +1,31 @@
 import React from "react";
 import { AppRoutes } from "./routes";
 import "./index.css";
-import { useState} from "react";
+import { useState, useEffect} from "react";
 
 
 function App() {
  
-  const [user, setUser] = useState(false);
-
+  const [user, setUser] =  useState(localStorage.getItem('user') || null,
   
-  const handleLogin = () => {
-    localStorage.setItem('user', 'true');
-    const curentLocalStorage = localStorage.getItem('user');
-    console.log(curentLocalStorage);
-    setUser(curentLocalStorage);
-  }
+  )
+  const [isLoginMode, setIsLoginMode] = useState(false);
+  // const handleLogin = () => {
+  //   localStorage.setItem('user', 'true');
+  //   const curentLocalStorage = localStorage.getItem('user');
+  //   setUser(curentLocalStorage);
+  // }
+  useEffect(()=>{
+    const curentIsLoginMode = localStorage.getItem ('IsLoginMode');
+    setIsLoginMode ( curentIsLoginMode || false);
+  }, []);
   return (
     <div className="App">
      <AppRoutes
-     user={user}
-     onAuthButtonClick={handleLogin}
+     user={user} 
+     setUser = {setUser}
+     isLoginMode = {isLoginMode}
+    //  onAuthButtonClick={handleLogin}
      />
     </div>
   )

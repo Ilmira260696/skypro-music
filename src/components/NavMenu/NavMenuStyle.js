@@ -15,7 +15,7 @@ background-color: transparent;
 margin-bottom: 20px;
 `;
 
-export const NavBurger = styled. div`
+export const NavBurger = styled.div`
 width: 20px;
 height: 36px;
 padding: 13px 0;

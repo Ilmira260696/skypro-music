@@ -2,7 +2,7 @@ import React from "react";
 import * as S from "./NavMenuStyle";
 import { useState } from "react";
 import { NavMenuItems } from "../NavMenuItems/NavMenuItems";
-import { Link } from "react-router-dom";
+
 
 function NavMenu() {
 
