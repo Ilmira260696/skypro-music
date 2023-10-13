@@ -12,10 +12,10 @@ export function AppRoutes({ user,setUser, isLoginMode }) {
   return (
     <Routes>
        
-  <Route path= "/Login" element= {<AuthPage isLoginMode={isLoginMode}   setUser = {setUser}/>}></Route>
+ <Route path= "/Login" element= {<AuthPage isLoginMode={isLoginMode}   setUser = {setUser}/>}></Route>
 
-  <Route path= "/Registration" element= {<AuthPage isLoginMode={isLoginMode}   setUser = {setUser}  />}></Route> 
-  
+  <Route path= "/Registration" element= {<AuthPage  isLoginMode={isLoginMode} setUser = {setUser}  />}></Route> 
+
 
 
 

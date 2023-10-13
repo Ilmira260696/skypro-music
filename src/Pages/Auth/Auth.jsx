@@ -31,7 +31,7 @@ export default function AuthPage({ isLoginMode, setUser }) {
   }
   }
   const handleRegister = async () => {
-    if (password ===!repeatPassword) {
+    if (password !==repeatPassword) {
       setError ('Пароли не совпадают');
     } else {
       try {
@@ -133,7 +133,7 @@ export default function AuthPage({ isLoginMode, setUser }) {
             {error && <S.Error>{error}</S.Error>}
             <S.Buttons>
               <S.PrimaryButton onClick={handleLogin} disabled={offButton}>
-              {offButton? 'Загружаю информацию...':'Войти'}
+              {offButton? 'Загружаю...':'Войти'}
               </S.PrimaryButton>
               <Link to="/Registration">
                 <S.ButtonTwo onClick={handleRegister} disabled={offButton}>

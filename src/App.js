@@ -1,33 +1,42 @@
 import React from "react";
 import { AppRoutes } from "./routes";
 import "./index.css";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
+import UserContext from "./Context/UserContext";
 
 
-function App({handleLogin}) {
- 
-  const [user, setUser] =  useState(localStorage.getItem('') || null,
+function App() {
+  const [user, setUser] = useState(window.localStorage.getItem("user") || null,
   
   )
+ 
   const [isLoginMode, setIsLoginMode] = useState(false);
-  // const handleLogin = () => {
-  //   localStorage.setItem('user', 'true');
+
+  // useEffect(() => {
+  //   const currentIsLoginMode = localStorage.getItem('isLoginMode');
+  //   console.log(currentIsLoginMode);
+  //   setIsLoginMode(currentIsLoginMode  || false);
+  //   console.log(isLoginMode)
+  // }, []);
+
+  // const handleLogout = () => {
+  //   localStorage.removeItem('user');
   //   const curentLocalStorage = localStorage.getItem('user');
+  //   console.log(curentLocalStorage)
   //   setUser(curentLocalStorage);
   // }
-  useEffect(()=>{
-    const curentIsLoginMode = localStorage.getItem ('IsLoginMode');
-    setIsLoginMode ( curentIsLoginMode || false);
-  }, []);
   return (
-    <div className="App">
-     <AppRoutes
-     user={user} 
-     setUser = {setUser}
-     isLoginMode = {isLoginMode}
-     onAuthButtonClick={handleLogin}
-     />
-    </div>
+    <>
+    
+      <UserContext.Provider value={{ user, setUser }}>
+      <AppRoutes
+        user={user}
+        setUser={setUser}
+        isLoginMode={isLoginMode}
+      />
+      </UserContext.Provider>
+    </>
   )
- }
-  export default App;
+}
+
+export default App

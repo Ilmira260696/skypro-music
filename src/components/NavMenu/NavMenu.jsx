@@ -30,7 +30,7 @@ function NavMenu({setUser}) {
           <S.MenuList>
           <NavMenuItems item={{ Link:"./",  text: "Главное" }} />
           <NavMenuItems item={{ Link:"./Favorites", text: "Мой плейлист" }} />
-          <NavMenuItems onClick={handleLogout}  item={{ Link:"./login", text: "Выйти" }} />
+          <NavMenuItems onClick={handleLogout}  item={{ Link:"./login", text: "Войти" }} />
         
           </S.MenuList>
         </S.NavMenu>
