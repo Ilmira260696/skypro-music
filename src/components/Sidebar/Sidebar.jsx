@@ -3,7 +3,7 @@ import * as S from "./SidebarStyle";
 import { CategoryArr } from "../../utilits/Constans";
 import { NavLink } from "react-router-dom";
 
-function SideBar({ loading, loadingTracksError }) {
+function SideBar({ loading, loadingTracksError}) {
   const FullCategory  = CategoryArr.map((category) => (
     <S.SidebarItem key={category.id}>
       {loading && !loadingTracksError ? (
@@ -18,7 +18,7 @@ function SideBar({ loading, loadingTracksError }) {
   return (
     <S.MainSidebar>
       <S.SidebarPersonal>
-        <S.SidebarPersonalName>Sergey.Ivanov</S.SidebarPersonalName>
+        <S.SidebarPersonalName></S.SidebarPersonalName>
         <S.SidebarIcon>
           <svg alt="logout">
             <use xlinkHref="img/icon/sprite.svg#logout"></use>

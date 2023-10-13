@@ -24,6 +24,7 @@ export const Login = ({ onAuthButtonClick }) => {
             <NavLink to="/Registration">
               <S.ModalBtnSignup> Зарегистрироваться </S.ModalBtnSignup>
             </NavLink>
+            
           </S.ModalFormLogin>
         </S.ModalBlock>
       </S.ContainerEnter>

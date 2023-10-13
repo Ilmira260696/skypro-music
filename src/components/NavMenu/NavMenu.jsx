@@ -4,7 +4,13 @@ import { useState } from "react";
 import { NavMenuItems } from "../NavMenuItems/NavMenuItems";
 
 
-function NavMenu() {
+function NavMenu({setUser}) {
+
+  
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+  };
 
   const [visible, setVisible] = useState(false);
   const toggleVisibility = () => setVisible(!visible);
@@ -16,7 +22,7 @@ function NavMenu() {
       <S.NavBurger type="button" onClick={toggleVisibility}>
         <S.BurgerLine></S.BurgerLine>
         <S.BurgerLine></S.BurgerLine>
-        <S.BurgerLine></S.BurgerLine>
+        <S.BurgerLine  ></S.BurgerLine>
       </S.NavBurger>
       
       {visible && (
@@ -24,7 +30,7 @@ function NavMenu() {
           <S.MenuList>
           <NavMenuItems item={{ Link:"./",  text: "Главное" }} />
           <NavMenuItems item={{ Link:"./Favorites", text: "Мой плейлист" }} />
-          <NavMenuItems item={{ Link:"./Login", text: "Войти" }} />
+          <NavMenuItems onClick={handleLogout}  item={{ Link:"./login", text: "Выйти" }} />
         
           </S.MenuList>
         </S.NavMenu>

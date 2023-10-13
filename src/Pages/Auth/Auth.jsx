@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { RegistrationApi, LoginApi } from "../../Api";
 
 
-export default function AuthPage({ isLoginMode = false, setUser }) {
+export default function AuthPage({ isLoginMode, setUser }) {
   const [error, setError] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +17,7 @@ export default function AuthPage({ isLoginMode = false, setUser }) {
       setError("Укажите почту или пароль");
     } else {
     try {
-    const response = await LoginApi(email, password);
+    const response = await LoginApi({email, password});
     console.log(response)
     setUser(response.username);
      localStorage.setItem ('user', response.username);
@@ -31,11 +31,11 @@ export default function AuthPage({ isLoginMode = false, setUser }) {
   }
   }
   const handleRegister = async () => {
-    if (password ==!repeatPassword) {
+    if (password ===!repeatPassword) {
       setError ('Пароли не совпадают');
     } else {
       try {
-   const response = await RegistrationApi (email, password);
+   const response = await RegistrationApi ({email, password});
    setOffButton(true)
    setUser(response.username);
    localStorage.setItem ('user', response.username);
@@ -94,8 +94,8 @@ export default function AuthPage({ isLoginMode = false, setUser }) {
             </S.Inputs>
             {error && <S.Error>{error}</S.Error>}
             <S.Buttons>
-            <S.PrimaryButton onClick={handleRegister} disabled={offButton}>
-                {offButton? 'Загружаем информацию...':'Зарегистрироваться'}
+            <S.PrimaryButton>
+                Зарегистрироваться
               </S.PrimaryButton>
             </S.Buttons>
           </>
@@ -133,10 +133,13 @@ export default function AuthPage({ isLoginMode = false, setUser }) {
             {error && <S.Error>{error}</S.Error>}
             <S.Buttons>
               <S.PrimaryButton onClick={handleLogin} disabled={offButton}>
-              {offButton? 'Загружаем информацию...':'Войти'}
+              {offButton? 'Загружаю информацию...':'Войти'}
               </S.PrimaryButton>
               <Link to="/Registration">
-                <S.ButtonTwo>Зарегистрироваться</S.ButtonTwo>
+                <S.ButtonTwo onClick={handleRegister} disabled={offButton}>
+                {offButton? 'Идет регистрация':'Зарегистрироваться'}
+
+                </S.ButtonTwo>
               </Link>
             </S.Buttons>
           </>
