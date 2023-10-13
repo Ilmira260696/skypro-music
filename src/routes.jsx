@@ -12,21 +12,22 @@ export function AppRoutes({ user,setUser, isLoginMode }) {
   return (
     <Routes>
        
- <Route path= "/Login" element= {<AuthPage  setUser = {setUser}/>}></Route>
+  <Route path= "/Login" element= {<AuthPage isLoginMode={isLoginMode}   setUser = {setUser}/>}></Route>
 
-  <Route path= "/Registration" element= {<AuthPage   setUser = {setUser}  />}></Route>
+  <Route path= "/Registration" element= {<AuthPage isLoginMode={isLoginMode}   setUser = {setUser}  />}></Route> 
   
 
 
 
 
+ 
       {/* <Route
         path="/Login"
         element={<Login onAuthButtonClick={onAuthButtonClick} />}
       />
       <Route path="/Registration" element={<Registration />} /> */}
 
-       <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
+       <Route element={<ProtectedRoute isAllowed={Boolean(user)}/>}>
         <Route path="/" element={<Main setUser = {setUser}  />} />
         <Route path="/Category/:id" element={<Category />} />
         <Route path="/Favorites" element={<Favorites />} />

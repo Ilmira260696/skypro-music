@@ -4,9 +4,9 @@ import "./index.css";
 import { useState, useEffect} from "react";
 
 
-function App() {
+function App({handleLogin}) {
  
-  const [user, setUser] =  useState(localStorage.getItem('user') || null,
+  const [user, setUser] =  useState(localStorage.getItem('') || null,
   
   )
   const [isLoginMode, setIsLoginMode] = useState(false);
@@ -25,10 +25,9 @@ function App() {
      user={user} 
      setUser = {setUser}
      isLoginMode = {isLoginMode}
-    //  onAuthButtonClick={handleLogin}
+     onAuthButtonClick={handleLogin}
      />
     </div>
   )
  }
   export default App;
-
