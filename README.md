@@ -1,3 +1,8 @@
+Реализация сценарий авторизации и регистрации в приложении Skypro.Music:
+План/Факт - 12/13ч.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
