@@ -2,18 +2,17 @@ import React from "react";
 import * as S from "./NavMenuStyle";
 import { useState } from "react";
 import { NavMenuItems } from "../NavMenuItems/NavMenuItems";
+import { useContext } from "react";
+import { UserContext } from "../../Context/UserContext";
 
-
-function NavMenu({setUser}) {
+function NavMenu() {
 
   
-  const handleLogout = () => {
-    setUser(null);
-    localStorage.removeItem("user");
-  };
+
 
   const [visible, setVisible] = useState(false);
   const toggleVisibility = () => setVisible(!visible);
+  const { handleLogout } = useContext(UserContext);
   return (
     <S.MainNav>
       <S.NavLogo>
@@ -30,7 +29,10 @@ function NavMenu({setUser}) {
           <S.MenuList>
           <NavMenuItems item={{ Link:"./",  text: "Главное" }} />
           <NavMenuItems item={{ Link:"./Favorites", text: "Мой плейлист" }} />
-          <NavMenuItems onClick={handleLogout}  item={{ Link:"./login", text: "Войти" }} />
+          <NavMenuItems
+              item={{ Link: "/Auth", text: "Выйти" }}
+              handleLogout={handleLogout}
+            />
         
           </S.MenuList>
         </S.NavMenu>

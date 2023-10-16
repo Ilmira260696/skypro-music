@@ -2,16 +2,11 @@ import React from "react";
 import * as S from "./SidebarStyle";
 import { CategoryArr } from "../../utilits/Constans";
 import { NavLink } from "react-router-dom";
-import UserContext from "../../Context/UserContext";
+import {UserContext} from "../../Context/UserContext";
+import { useContext } from "react";
 
-
-function SideBar({ loading, loadingTracksError, user, setUser}) {
- 
-  const handleLogout = () => {
-    setUser(null);
-    localStorage.removeItem('user');
-  };
- 
+function SideBar({ loading, loadingTracksError}) {
+  const { user, handleLogout } = useContext(UserContext);
   const FullCategory  = CategoryArr.map((category) => (
     <S.SidebarItem key={category.id}>
       {loading && !loadingTracksError ? (
@@ -27,7 +22,7 @@ function SideBar({ loading, loadingTracksError, user, setUser}) {
     <S.MainSidebar>
     <S.SidebarPersonal>
           <S.SidebarPersonalName>{user}</S.SidebarPersonalName>
-          <S.SidebarIcon >
+          <S.SidebarIcon onClick={handleLogout} >
             <svg alt="logout">
               <use xlinkHref="img/icon/sprite.svg#logout" />
             </svg>

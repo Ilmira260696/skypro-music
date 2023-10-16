@@ -5,34 +5,18 @@ import { Favorites } from "./Pages/Favorites/Favorites";
 import { NotFound } from "./Pages/NotFound/NotFound";
 import { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
 import { Category } from "./Pages/Category/Category";
-import AuthPage from "./Pages/Auth/Auth";
+import {AuthPage} from "./Pages/Auth/Auth";
 
 
-export function AppRoutes({ user,setUser, isLoginMode }) {
+export function AppRoutes({ user,setUser }) {
   return (
     <Routes>
-       
- <Route path= "/Login" element= {<AuthPage isLoginMode={isLoginMode}   setUser = {setUser}/>}></Route>
-
-  <Route path= "/Registration" element= {<AuthPage  isLoginMode={isLoginMode} setUser = {setUser}  />}></Route> 
-
-
-
-
-
- 
-      {/* <Route
-        path="/Login"
-        element={<Login onAuthButtonClick={onAuthButtonClick} />}
-      />
-      <Route path="/Registration" element={<Registration />} /> */}
-
+       <Route path="/Auth" element={<AuthPage setUser={setUser} />} />
        <Route element={<ProtectedRoute isAllowed={Boolean(user)}/>}>
         <Route path="/" element={<Main setUser = {setUser}  />} />
         <Route path="/Category/:id" element={<Category />} />
         <Route path="/Favorites" element={<Favorites />} />
       </Route>
-
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
