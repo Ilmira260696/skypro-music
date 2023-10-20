@@ -3,6 +3,8 @@ import { AppRoutes } from "./routes";
 import "./index.css";
 import { useState} from "react";
 import {UserContext} from "./Context/UserContext";
+import { Provider } from "react-redux";
+import {store} from "./store/store"
 
 
 function App() {
@@ -16,7 +18,9 @@ function App() {
   };
   return (
     <UserContext.Provider value={{ user, handleLogout }}>
+       <Provider store={store}>
       <AppRoutes user={user} setUser={setUser} />
+      </Provider>
     </UserContext.Provider>
   );
 }

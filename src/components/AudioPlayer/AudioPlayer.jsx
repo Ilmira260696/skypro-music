@@ -1,33 +1,51 @@
 import React from "react";
 import *as S  from "./AudioPlayerStyle";
-
+import { useState, useEffect, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { PlayerTrackPlay } from "../PlayerTrackPlay/PlayerTrackPlay";
 import { BarPlayerProgress } from "../BarPlayerProgress/BarPlayerProgress";
-import { useState, useEffect, useRef } from "react";
 import { PlayerControls } from "../PlayerControl/PlayerControlStyle";
 import { AudioPlayerIcons } from "../AudioPlayerIcons/AudioPlayerIcons";
 import { VolumeBlock } from "../VolumeBlock/VolumeBlock";
+import {
+  isPlayingSelector, 
+  allTracksSelector, 
+  indexCurrentTrackSelector,
+  shuffleAllTracksSelector,
+  shuffleSelector} from "../../store/selectors/track";
+
+import { setIsPlaying, setNextTrack, setPrevTrack, toggleShuffleTrack } from "../../store/actions/creators/track";
+
 
 
 function AudioPlayer ({ currentTrack}) {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const tracks = useSelector(allTracksSelector);
+  const dispatch = useDispatch();
+  const isPlaying = useSelector (isPlayingSelector);
+  const shuffle = useSelector(shuffleSelector);
+  const shuffleAllTracks = useSelector (shuffleAllTracksSelector);
   const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const audioRef = useRef(null);
+  const indexCurrentTrack = useSelector(indexCurrentTrackSelector);
  
   const handleStart = () => {
     audioRef.current.play();
-    setIsPlaying(true);
+    dispatch(setIsPlaying(true));
   };
   const handleStop = () => {
     audioRef.current.pause();
-    setIsPlaying(false);
+    dispatch(setIsPlaying(false));
   };
   const togglePlay = isPlaying ? handleStop : handleStart;
+  const arrayTracksAll = shuffle ? shuffleAllTracks :tracks;
   
   useEffect(() => {
     handleStart();
-  }, [currentTrack]);
+    audioRef.current.onended = () => {
+      dispatch (setNextTrack( arrayTracksAll[indexCurrentTrack+1]+indexCurrentTrack+1))
+  };
+ }, [currentTrack]);
 
   const onLoadedMetadata = () => {
     setDuration(audioRef.current.duration);
@@ -42,6 +60,20 @@ function AudioPlayer ({ currentTrack}) {
     audioRef.current.loop = !repeatTrack;
     setRepeatTrack(!repeatTrack);
   };
+
+  const toggleCurrentTrack =(alt) => {
+    if (alt==="next") {
+      const indexNextTrack = indexCurrentTrack +1;
+      return dispatch (setNextTrack(arrayTracksAll[indexNextTrack ], indexNextTrack )
+      )
+    }
+    if(alt=== "prev" && indexCurrentTrack >0 ) {
+      const indexPrevTrack = indexCurrentTrack -1;
+      return dispatch (setPrevTrack(arrayTracksAll[indexPrevTrack ], indexPrevTrack )
+      )
+    }
+    }
+  
     return (
         <S.Bar>
             <audio
@@ -63,7 +95,7 @@ function AudioPlayer ({ currentTrack}) {
           <AudioPlayerIcons
                 alt="prev"
                 click={() => {
-                  alert("Еще не реализовано");
+                  toggleCurrentTrack ("prev")
                 }}
               />
               <AudioPlayerIcons
@@ -73,14 +105,14 @@ function AudioPlayer ({ currentTrack}) {
               <AudioPlayerIcons
                 alt="next"
                 click={() => {
-                  alert("Еще не реализовано");
+                  toggleCurrentTrack ("next")
                 }}
               />
               <AudioPlayerIcons alt="repeat" click={toggleTrackRepeat} repeatTrack={repeatTrack} />
               <AudioPlayerIcons
                 alt="shuffle"
                 click={() => {
-                  alert("Еще не реализовано");
+                  dispatch(toggleShuffleTrack(!shuffle))
                 }}
               />
          </PlayerControls>

@@ -3,16 +3,17 @@ const icons = {
   prev: css`
     margin-right: 23px;
   `,
+  next: css`
+    margin-right: 28px;
+    fill: #a53939;
+  `,
   play: css`
     margin-right: 23px;
   `,
   pause: css`
     margin-right: 23px;
   `,
-  next: css`
-    margin-right: 28px;
-    fill: #a53939;
-  `,
+  
   repeat: css`
     margin-right: 24px;
   `,
@@ -47,16 +48,15 @@ const iconsSvg = {
     width: 15px;
     height: 14px;
   `,
-  play: css`
-    width: 22px;
-    height: 20px;
-    fill: #d9d9d9;
-  `,
-
   pause: css`
     width: 22px;
     height: 20px;
     flex-shrink: 0;
+  `,
+  play: css`
+    width: 22px;
+    height: 20px;
+    fill: #d9d9d9;
   `,
   next: css`
     width: 15px;
