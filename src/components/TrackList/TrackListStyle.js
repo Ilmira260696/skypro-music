@@ -63,7 +63,7 @@ export const animation = keyframes`{
   margin-right: 17px;
   `;
 
-  export const TrackTitleSvg = styled (TrackTitle) `
+  export const TrackTitleSvg = styled.svg `
   width: 18px;
   height: 17px;
   fill: transparent;

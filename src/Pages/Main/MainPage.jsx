@@ -12,7 +12,7 @@ import TrackListTitle from "../../components/TrackListTitle/TrackListTitle";
 import { GetAllTracks } from "../../Api";
 import { allTracksSelector, CurrentTrackSelector,shuffleAllTracksSelector,
  shuffleSelector } from "../../store/selectors/track";
-import { setAllTracks, setCurrentTrack, setNextTrack } from "../../store/actions/creators/track";
+import { setAllTracks, setCurrentTrack } from "../../store/actions/creators/track";
 
 
 
@@ -26,8 +26,6 @@ function Main() {
   const shuffle = useSelector ( shuffleSelector);
   const shuffleAllTracks = useSelector (shuffleAllTracksSelector);
   const arrayTracksAll = shuffle ? shuffleAllTracks :tracks;
-
-
 
 
   const handleCurrentTrack = (track) =>{

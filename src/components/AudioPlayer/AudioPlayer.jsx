@@ -108,7 +108,7 @@ function AudioPlayer ({ currentTrack}) {
                   toggleCurrentTrack ("next")
                 }}
               />
-              <AudioPlayerIcons alt="repeat" click={toggleTrackRepeat} repeatTrack={repeatTrack} />
+              <AudioPlayerIcons alt="repeat" click={toggleTrackRepeat}  />
               <AudioPlayerIcons
                 alt="shuffle"
                 click={() => {

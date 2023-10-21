@@ -1,11 +1,8 @@
 import styled, { css } from "styled-components";
+
 const icons = {
   prev: css`
     margin-right: 23px;
-  `,
-  next: css`
-    margin-right: 28px;
-    fill: #a53939;
   `,
   play: css`
     margin-right: 23px;
@@ -13,7 +10,10 @@ const icons = {
   pause: css`
     margin-right: 23px;
   `,
-  
+  next: css`
+    margin-right: 28px;
+    fill: #a53939;
+  `,
   repeat: css`
     margin-right: 24px;
   `,
@@ -48,15 +48,16 @@ const iconsSvg = {
     width: 15px;
     height: 14px;
   `,
-  pause: css`
-    width: 22px;
-    height: 20px;
-    flex-shrink: 0;
-  `,
   play: css`
     width: 22px;
     height: 20px;
     fill: #d9d9d9;
+  `,
+
+  pause: css`
+    width: 22px;
+    height: 20px;
+    flex-shrink: 0;
   `,
   next: css`
     width: 15px;
@@ -74,7 +75,7 @@ const iconsSvg = {
     width: 19px;
     height: 12px;
     fill: transparent;
-    stroke: #696969;
+    stroke: ${(props) => (props.$active ? '#FFFFFF' : '#696969')};
   `,
 };
 
