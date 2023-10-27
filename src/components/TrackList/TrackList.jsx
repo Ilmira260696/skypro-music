@@ -2,7 +2,7 @@ import React from "react";
 import * as S from "./TrackListStyle";
 import {useSelector } from "react-redux";
 import {CurrentTrackSelector, isPlayingSelector} from "../../store/selectors/track";
-// import {setIsPlaying} from "../../store/actions/creators/track";
+
 
 function Tracks({ loading, handleCurrentTrack, tracks }) {
   // const tracks = useSelector(allTracksSelector);

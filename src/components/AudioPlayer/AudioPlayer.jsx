@@ -14,7 +14,11 @@ import {
   shuffleAllTracksSelector,
   shuffleSelector} from "../../store/selectors/track";
 
-import { setIsPlaying, setNextTrack, setPrevTrack, toggleShuffleTrack } from "../../store/actions/creators/track";
+import { 
+  setIsPlaying, 
+  setNextTrack, 
+  setPrevTrack,
+  toggleShuffleTrack } from "../../store/slices/track";
 
 
 
@@ -67,7 +71,7 @@ function AudioPlayer ({ currentTrack}) {
       return dispatch (setNextTrack(arrayTracksAll[indexNextTrack ], indexNextTrack )
       )
     }
-    if(alt=== "prev" && indexCurrentTrack >0 ) {
+    if(alt=== "prev" && indexCurrentTrack > 0 ) {
       const indexPrevTrack = indexCurrentTrack -1;
       return dispatch (setPrevTrack(arrayTracksAll[indexPrevTrack ], indexPrevTrack )
       )
@@ -116,12 +120,10 @@ function AudioPlayer ({ currentTrack}) {
                 }}
               />
          </PlayerControls>
-            <PlayerTrackPlay   currentTrack={ currentTrack} />
+            <PlayerTrackPlay   currentTrack={currentTrack} />
               </S.BarPlayerPlayer>
             <VolumeBlock  audioRef={audioRef}  />
-           
             </S.BarPlayerBlock>
-          
           </S.BarContent>
       </S.Bar>
     )

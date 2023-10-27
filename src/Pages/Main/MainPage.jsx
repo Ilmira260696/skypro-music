@@ -12,7 +12,7 @@ import TrackListTitle from "../../components/TrackListTitle/TrackListTitle";
 import { GetAllTracks } from "../../Api";
 import { allTracksSelector, CurrentTrackSelector,shuffleAllTracksSelector,
  shuffleSelector } from "../../store/selectors/track";
-import { setAllTracks, setCurrentTrack } from "../../store/actions/creators/track";
+import { setAllTracks, setCurrentTrack } from "../../store/slices/track";
 
 
 
