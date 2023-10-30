@@ -4,9 +4,9 @@ import {useSelector } from "react-redux";
 import {CurrentTrackSelector, isPlayingSelector} from "../../store/selectors/track";
 
 
-function Tracks({ loading, handleCurrentTrack, tracks }) {
+function Tracks({ loading, handleCurrentTrack, tracks, currentTrack }) {
   // const tracks = useSelector(allTracksSelector);
-  const currentTrack = useSelector (CurrentTrackSelector);
+ 
   const isPlaying = useSelector (isPlayingSelector);
 
 

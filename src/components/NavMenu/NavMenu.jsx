@@ -7,9 +7,6 @@ import { UserContext } from "../../Context/UserContext";
 
 function NavMenu() {
 
-  
-
-
   const [visible, setVisible] = useState(false);
   const toggleVisibility = () => setVisible(!visible);
   const { handleLogout } = useContext(UserContext);

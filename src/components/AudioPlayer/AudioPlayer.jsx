@@ -13,6 +13,7 @@ import {
   indexCurrentTrackSelector,
   shuffleAllTracksSelector,
   shuffleSelector} from "../../store/selectors/track";
+  import {CurrentTrackSelector} from "../../store/selectors/track";
 
 import { 
   setIsPlaying, 
@@ -22,7 +23,8 @@ import {
 
 
 
-function AudioPlayer ({ currentTrack}) {
+function AudioPlayer () {
+  const currentTrack = useSelector (CurrentTrackSelector);
   const tracks = useSelector(allTracksSelector);
   const dispatch = useDispatch();
   const isPlaying = useSelector (isPlayingSelector);
@@ -128,4 +130,5 @@ function AudioPlayer ({ currentTrack}) {
       </S.Bar>
     )
 }
+console.log (AudioPlayer())
 export default AudioPlayer;

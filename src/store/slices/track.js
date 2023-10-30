@@ -27,21 +27,21 @@ export const tracksSlice = createSlice({
       },
 
       setCurrentTrack: (state, action) => {
-        const {track, indexCurrentTrack } = action.payload;
+        const {track,indexCurrentTrack } = action.payload;
         state.currentTrack = track;
-        state. indexCurrentTrack =  indexCurrentTrack;
+        state.indexCurrentTrack =  indexCurrentTrack;
       },
 
       setNextTrack: (state, action) => {
         const {indexNextTrack,nextTrack} = action.payload;
         state.currentTrack = nextTrack;
-        state. indexCurrentTrack =  indexNextTrack;
+        state.indexCurrentTrack = indexNextTrack;
       },
 
       setPrevTrack: (state, action) => {
         const {indexPrevTrack,prevTrack} = action.payload;
         state.currentTrack = prevTrack;
-        state. indexCurrentTrack =  indexPrevTrack;
+        state.indexCurrentTrack =  indexPrevTrack;
       },
 
       toggleShuffleTrack: (state, action) => {
