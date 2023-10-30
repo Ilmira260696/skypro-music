@@ -130,5 +130,5 @@ function AudioPlayer () {
       </S.Bar>
     )
 }
-console.log (AudioPlayer())
+
 export default AudioPlayer;
