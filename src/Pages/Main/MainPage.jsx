@@ -30,7 +30,7 @@ function Main() {
 
   const handleCurrentTrack = (track) =>{
     const indexCurrentTrack = arrayTracksAll.indexOf(track);
-    dispatch(setCurrentTrack(track, indexCurrentTrack));
+    dispatch(setCurrentTrack({track, indexCurrentTrack}));
   }
   useEffect(() => {
   

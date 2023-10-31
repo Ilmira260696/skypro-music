@@ -50,3 +50,26 @@ flex-direction: row;
 justify-content: space-between;
 `;
 
+export const PlayerControls = styled.div `
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-orient: horizontal;
+-webkit-box-direction: normal;
+-ms-flex-direction: row;
+flex-direction: row;
+padding: 0 27px 0 31px;
+`;
+
+export const PlayerBtnPrev = styled.div `
+margin-right: 23px;
+padding: 5px;
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-align: center;
+-ms-flex-align: center;
+align-items: center;
+`;
+
+

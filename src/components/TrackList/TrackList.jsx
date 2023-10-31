@@ -8,8 +8,6 @@ function Tracks({ loading, handleCurrentTrack, tracks, currentTrack }) {
   // const tracks = useSelector(allTracksSelector);
  
   const isPlaying = useSelector (isPlayingSelector);
-
-
   const trackItems = tracks.map((track) => (
     <S.PlaylistItem key={track.id} onClick={() => handleCurrentTrack(track)}>
       <S.PlaylistTrack>

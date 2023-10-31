@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   allTracks: [],
-  currentTrack:null,
+  currentTrack: null,
   indexCurrentTrack: null,
   isPlaying: false,
   shuffle: false,
@@ -27,27 +27,28 @@ export const tracksSlice = createSlice({
       },
 
       setCurrentTrack: (state, action) => {
-        const {track,indexCurrentTrack } = action.payload;
-        state.currentTrack = track;
-        state.indexCurrentTrack =  indexCurrentTrack;
-      },
+        const { track, indexCurrentTrack } = action.payload;
+      state.currentTrack = track;
+      state.indexCurrentTrack = indexCurrentTrack;
+    },
 
       setNextTrack: (state, action) => {
-        const {indexNextTrack,nextTrack} = action.payload;
+        const {indexNextTrack, nextTrack} = action.payload;
         state.currentTrack = nextTrack;
         state.indexCurrentTrack = indexNextTrack;
       },
 
       setPrevTrack: (state, action) => {
-        const {indexPrevTrack,prevTrack} = action.payload;
+        const {indexPrevTrack, prevTrack} = action.payload;
         state.currentTrack = prevTrack;
         state.indexCurrentTrack =  indexPrevTrack;
       },
 
       toggleShuffleTrack: (state, action) => {
       //  state.shuffle = action.payload;
-         const {shuffle} = action.payload;
-       state.shuffleAllTracks = shuffle && getShuffleAllTracks(state.allTracks)
+        //  const {shuffle} = action.payload;
+        state.shuffle = action.payload;
+       state.shuffleAllTracks = state.shuffle && getShuffleAllTracks(state.allTracks)
       }
    
 }

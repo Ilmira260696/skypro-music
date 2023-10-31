@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { PlayerTrackPlay } from "../PlayerTrackPlay/PlayerTrackPlay";
 import { BarPlayerProgress } from "../BarPlayerProgress/BarPlayerProgress";
-import { PlayerControls } from "../PlayerControl/PlayerControlStyle";
 import { AudioPlayerIcons } from "../AudioPlayerIcons/AudioPlayerIcons";
 import { VolumeBlock } from "../VolumeBlock/VolumeBlock";
 import {
@@ -13,7 +12,8 @@ import {
   indexCurrentTrackSelector,
   shuffleAllTracksSelector,
   shuffleSelector} from "../../store/selectors/track";
-  import {CurrentTrackSelector} from "../../store/selectors/track";
+
+import {CurrentTrackSelector} from "../../store/selectors/track";
 
 import { 
   setIsPlaying, 
@@ -44,14 +44,22 @@ function AudioPlayer () {
     dispatch(setIsPlaying(false));
   };
   const togglePlay = isPlaying ? handleStop : handleStart;
-  const arrayTracksAll = shuffle ? shuffleAllTracks :tracks;
+  const arrayTracksAll = shuffle ? shuffleAllTracks : tracks;
   
   useEffect(() => {
     handleStart();
     audioRef.current.onended = () => {
-      dispatch (setNextTrack( arrayTracksAll[indexCurrentTrack+1]+indexCurrentTrack+1))
-  };
- }, [currentTrack]);
+if (indexCurrentTrack < arrayTracksAll.length-1) {
+      dispatch (setNextTrack({
+        nextTrack:arrayTracksAll[arrayTracksAll.indexOf(currentTrack)+1],
+        indexNextTrack: arrayTracksAll.indexOf(currentTrack)+1,
+  })
+      )
+}
+dispatch (setIsPlaying(false));
+ };
+},
+ [currentTrack]);
 
   const onLoadedMetadata = () => {
     setDuration(audioRef.current.duration);
@@ -68,17 +76,22 @@ function AudioPlayer () {
   };
 
   const toggleCurrentTrack =(alt) => {
-    if (alt==="next") {
-      const indexNextTrack = indexCurrentTrack +1;
-      return dispatch (setNextTrack(arrayTracksAll[indexNextTrack ], indexNextTrack )
+    if (alt==="next" && indexCurrentTrack < arrayTracksAll.length -1) {
+      const indexNextTrack = arrayTracksAll.indexOf(currentTrack)+1;
+      return dispatch (setNextTrack({
+        nextTrack:arrayTracksAll[indexNextTrack ], indexNextTrack,
+      })
       )
     }
-    if(alt=== "prev" && indexCurrentTrack > 0 ) {
-      const indexPrevTrack = indexCurrentTrack -1;
-      return dispatch (setPrevTrack(arrayTracksAll[indexPrevTrack ], indexPrevTrack )
-      )
+    if(alt === "prev" && indexCurrentTrack > 0 ) {
+      const indexPrevTrack =arrayTracksAll.indexOf(currentTrack)-1;
+      return dispatch (setPrevTrack({
+        prevTrack:
+        arrayTracksAll[indexPrevTrack ], indexPrevTrack,
+      })
+      );
     }
-    }
+  };
   
     return (
         <S.Bar>
@@ -97,7 +110,7 @@ function AudioPlayer () {
         />
          <S.BarPlayerBlock>
           <S.BarPlayerPlayer>
-          <PlayerControls>
+          <S.PlayerControls>
           <AudioPlayerIcons
                 alt="prev"
                 click={() => {
@@ -121,7 +134,7 @@ function AudioPlayer () {
                   dispatch(toggleShuffleTrack(!shuffle))
                 }}
               />
-         </PlayerControls>
+         </S.PlayerControls>
             <PlayerTrackPlay   currentTrack={currentTrack} />
               </S.BarPlayerPlayer>
             <VolumeBlock  audioRef={audioRef}  />
