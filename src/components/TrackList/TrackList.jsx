@@ -1,12 +1,13 @@
 import React from "react";
 import * as S from "./TrackListStyle";
 import {useSelector } from "react-redux";
-import {CurrentTrackSelector, isPlayingSelector} from "../../store/selectors/track";
+import { isPlayingSelector} from "../../store/selectors/track";
+import {CurrentTrackSelector} from "../../store/selectors/track";
 
 
-function Tracks({ loading, handleCurrentTrack, tracks, currentTrack }) {
+function Tracks({ loading, handleCurrentTrack, tracks }) {
   // const tracks = useSelector(allTracksSelector);
- 
+  const currentTrack = useSelector (CurrentTrackSelector);
   const isPlaying = useSelector (isPlayingSelector);
   const trackItems = tracks.map((track) => (
     <S.PlaylistItem key={track.id} onClick={() => handleCurrentTrack(track)}>
