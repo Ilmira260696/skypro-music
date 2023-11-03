@@ -6,10 +6,10 @@ import {UserContext} from "../../Context/UserContext";
 import { useContext } from "react";
 
 function SideBar({ loading, loadingTracksError}) {
-  const { user, handleLogout } = useContext(UserContext);
+  
   const FullCategory  = CategoryArr.map((category) => (
     <S.SidebarItem key={category.id}>
-      {loading && !loadingTracksError ? (
+      {!loading && !loadingTracksError ? (
         <NavLink to={`/Category/${category.id}`}>
           <S.SidebarImg src={category.img} alt={category.alt} />
         </NavLink>
@@ -18,6 +18,8 @@ function SideBar({ loading, loadingTracksError}) {
       )}
     </S.SidebarItem>
   ));
+
+  const { user, handleLogout } = useContext(UserContext);
   return (
     <S.MainSidebar>
     <S.SidebarPersonal>

@@ -12,7 +12,7 @@ import AudioPlayer from "./AudioPlayer/AudioPlayer";
 const Layout = ({ loading, loadingTracksError }) => {
   const currentTrack = useSelector(CurrentTrackSelector);
   return (
-    // <div className="App">
+    <div className="App">
       <S.wrapper>
         <S.container>
           <S.main>
@@ -32,10 +32,10 @@ const Layout = ({ loading, loadingTracksError }) => {
           {currentTrack && (
             <AudioPlayer loading={loading} currentTrack={currentTrack} />
           )}
+          <footer className="footer"></footer>
         </S.container>
-        <footer className="footer"></footer>
       </S.wrapper>
-// </div>
+</div>
   );
 };
 export { Layout };

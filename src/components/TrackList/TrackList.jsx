@@ -68,7 +68,7 @@ function Tracks({ loading, handleCurrentTrack, tracks }) {
           </S.TrackTimeText>
         </div>
       </S.PlaylistTrack>
-    </S.PlaylistItem>
+     </S.PlaylistItem>
   ));
 
   return <S.ContentPlaylist>{trackItems}</S.ContentPlaylist>;

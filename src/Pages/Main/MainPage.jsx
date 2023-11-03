@@ -53,16 +53,11 @@ function Main() {
     }
   }, [loading]);
   return (
-    <div>
-      <S.wrapper>
-        <S.container>
-          <S.main>
-            <NavMenu />
-            <S.MainCenterBlock>
-              <Search />
+ <>
+   
               <Filters />
-              <S.CenterBlockH2>Треки</S.CenterBlockH2>
-              <TrackListTitle  />
+              
+              {/* <TrackListTitle  /> */}
               {loadingTracksError ? (
           <div>Не удалось загрузить плейлист, попробуйте позже</div>
         ) : (
@@ -75,16 +70,16 @@ function Main() {
                />
 
                )}
-            </S.MainCenterBlock>
+      
             <SideBar loading={loading}  loadingTracksError={loadingTracksError}/>
-          </S.main>
+       
           {currentTrack && (
           <AudioPlayer loading={loading}  currentTrack={currentTrack} />
           )}
-        </S.container>
-        <footer className="footer"></footer>
-      </S.wrapper>
-    </div>
+     
+        
+    
+        </>
   );
 };
 export default Main;
