@@ -31,6 +31,14 @@ export const animation = keyframes`{
   -ms-flex-align: center;
   align-items: center;
   `;
+  export const Centerblock = styled.h2`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  letter-spacing: -0.8px;
+  margin-bottom: 45px;
+`;
 
   export const TrackTitle = styled.div `
   display: -webkit-box;

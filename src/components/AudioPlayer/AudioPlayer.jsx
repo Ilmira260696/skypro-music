@@ -2,7 +2,6 @@ import React from "react";
 import *as S  from "./AudioPlayerStyle";
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { PlayerTrackPlay } from "../PlayerTrackPlay/PlayerTrackPlay";
 import { BarPlayerProgress } from "../BarPlayerProgress/BarPlayerProgress";
 import { AudioPlayerIcons } from "../AudioPlayerIcons/AudioPlayerIcons";
 import { VolumeBlock } from "../VolumeBlock/VolumeBlock";
@@ -22,8 +21,7 @@ import {
   toggleShuffleTrack } from "../../store/slices/track";
 
 
-
-function AudioPlayer ({currentTrack}) {
+function AudioPlayer ({currentTrack, loading}) {
   
   const tracks = useSelector(allTracksSelector);
   const dispatch = useDispatch();
@@ -135,7 +133,45 @@ dispatch (setIsPlaying(false));
                 }}
               />
          </S.PlayerControls>
-            <PlayerTrackPlay   currentTrack={currentTrack} />
+            <S.PlayerTrackPlay />
+            <S.TrackPlayContain>
+            <S.TrackPlayImage>
+           <S.TrackPlaySvg>
+              <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
+              </S.TrackPlaySvg>
+            </S.TrackPlayImage>
+            {!loading ? (
+          <S.TrackPlayAuthor>
+            <S.TrackPlayAuthorLink href="http://">
+            {currentTrack.name}
+            </S.TrackPlayAuthorLink>
+            </S.TrackPlayAuthor>
+            ) : (
+              <S.SkeletonPlayer  />
+            )}
+            {!loading ? (
+               <S.TrackPlayAlbum>
+               <S.TrackPlayLink href="http://">
+               {currentTrack.author}
+               </S.TrackPlayLink>
+               </S.TrackPlayAlbum>  
+                  ) : ( 
+ <S.SkeletonPlayer  />
+                  )}
+</S.TrackPlayContain> 
+      
+        <S.TrackPlayLikeDis>
+         <S.TrackPlayLike>
+           <S.TrackPlayLikeSvg>
+              <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
+              </S.TrackPlayLikeSvg>
+            </S.TrackPlayLike>
+          <S.TrackPlayDislike>
+            <S.TrackPlayDislikeSvg>
+              <use xlinkHref="img/icon/sprite.svg#icon-dislike"></use>
+              </S.TrackPlayDislikeSvg>
+            </S.TrackPlayDislike>
+          </S.TrackPlayLikeDis>
               </S.BarPlayerPlayer>
             <VolumeBlock  audioRef={audioRef}  />
             </S.BarPlayerBlock>

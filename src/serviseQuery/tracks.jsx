@@ -1,4 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import { setAuth } from '../store/slices/AuthorizationSlice';
 
 /**
  * baseQueryWithReauth – это наша кастомная обертка над fetchBaseQuery, которая умеет обновлять access токен если запрос вернул 401 код.
@@ -96,20 +97,61 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   return retryResult;
 };
 
-export const playlistApi = createApi({
+export const  tracksQuery = createApi({
   reducerPath: "playlistApi",
   // Используем кастомную baseQueryWithReauth вместо стандартной fetchBaseQuery
   baseQuery: baseQueryWithReauth,
-  endpoints: (builder) => ({
-    getMainPlaylist: builder.query({
+  tagTypes: ['Tracks', 'Favorites'],
+ baseQuery:baseQueryWithReauth,
+  endpoints: (build) => ({
+    getTrackAll: build.query({
       query: () => "/catalog/track/all/",
-    }),
-    getMyPlaylist: builder.query({
-      query: () => ({
-        url: "/catalog/track/favorite/all/",
-      }),
-    }),
-  }),
-});
+      providesTags:(result) =>
+      result ? [
+        ...result.map(({id})=>({type:"Tracks", id})),
+        {type:"Tracks", id:"LIST"},
+      ] : [{type:"Tracks", id:"LIST"}],
+      getFavoritesAllTracks: build.query({
+        query: () => ({
+          url: "/catalog/track/favorite/all/",
+          providesTags:(result) =>
+          result ? [
+            ...result.map(({id})=>({type:"Tracks", id})),
+            {type:"Tracks", id:"LIST"},
+          ] : [{type:"Tracks", id:"LIST"}],
+        }),
 
-export const { useGetMainPlaylistQuery, useGetMyPlaylistQuery } = playlistApi;
+
+        setLike:build.mutation({
+          query:(track) =>({
+            url: `catalog/track/${track.id}/favorite/`,
+            method: "POST",         
+          }),
+          invalidatesTags: [
+            {type:"Favorites", id:"LIST"},
+         {type:"Tracks", id:"LIST"},
+          ]
+        }),
+
+        setDislike:build.mutation ({
+          query: (track)=> ({
+            url: `catalog/track/${track.id}/favorite/`,
+            method: "DELETE",         
+          }),
+
+          invalidatesTags: [
+            {type:"Favorites", id:"LIST"},
+         {type:"Tracks", id:"LIST"},
+          ]
+        }),
+      })
+        })
+      })
+    })
+      
+
+
+
+
+  
+export const { useGetTrackAllQuery,usegetFavoritesAllTracksQuery,useSetLikeMutation, useSetDislikeMutation } = tracksQuery;

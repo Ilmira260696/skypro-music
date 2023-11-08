@@ -2,45 +2,39 @@ import React from "react";
 import * as S from "./MainPageStyle";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux";
-import Search from "../../components/Search/Search";
 import TrackList from "../../components/TrackList/TrackList";
-import SideBar from "../../components/Sidebar/Sidebar";
-import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
-import NavMenu from "../../components/NavMenu/NavMenu";
-import Filters from "../../components/Filters/Filters";
-import TrackListTitle from "../../components/TrackListTitle/TrackListTitle";
-import { GetAllTracks } from "../../Api";
-import { allTracksSelector, CurrentTrackSelector,shuffleAllTracksSelector,
- shuffleSelector } from "../../store/selectors/track";
+import { allTracksSelector
+ } from "../../store/selectors/track";
 import { setAllTracks, setCurrentTrack } from "../../store/slices/track";
+import  useGetTrackAllQuery from "../../serviseQuery/tracks";
 
 
 
 function Main() {
   const dispatch = useDispatch();
-  // const isPlaying = useSelector(isPlayingSelector);
   const [loading, setLoading] = useState(false);
   const tracks = useSelector(allTracksSelector);
-  const [loadingTracksError, setLoadingTracksError] = useState(null);
-  const currentTrack = useSelector (CurrentTrackSelector)
-  const shuffle = useSelector ( shuffleSelector);
-  const shuffleAllTracks = useSelector (shuffleAllTracksSelector);
-  const arrayTracksAll = shuffle ? shuffleAllTracks :tracks;
+  // const [loadingTracksError, setLoadingTracksError] = useState(null);
+  // const currentTrack = useSelector (currentTrackSelector)
+  // const shuffle = useSelector ( shuffleSelector);
+  // const shuffleAllTracks = useSelector (shuffleAllTracksSelector);
+  const {data,loadingTracksError} = useGetTrackAllQuery();
 
 
-  const handleCurrentTrack = (track) =>{
-    const indexCurrentTrack = arrayTracksAll.indexOf(track);
-    dispatch(setCurrentTrack({track, indexCurrentTrack}));
-  }
-  useEffect(() => {
+
+  // const handleCurrentTrack = (track) =>{
+  //   const indexCurrentTrack = arrayTracksAll.indexOf(track);
+  //   dispatch(setCurrentTrack({track, indexCurrentTrack}));
+  // }
+  // useEffect(() => {
   
-    GetAllTracks().then((track) => {
-      dispatch(setAllTracks(track));
-    })
-    .catch((error) => {
-    setLoadingTracksError(error.message);
-    });
-  }, []);
+  //   GetAllTracks().then((track) => {
+  //     dispatch(setAllTracks(track));
+  //   })
+  //   .catch((error) => {
+  //   setLoadingTracksError(error.message);
+  //   });
+  // }, []);
 
     
   useEffect(() => {
@@ -52,33 +46,22 @@ function Main() {
       return () => clearTimeout(timer);
     }
   }, [loading]);
+
+  useEffect(()=> {
+    if(data) {
+      dispatch(setAllTracks(data));
+      dispatch(setCurrentTrack("Main"));
+    }
+
+  },[data])
   return (
  <>
-   
-              <Filters />
-              
-              {/* <TrackListTitle  /> */}
-              {loadingTracksError ? (
-          <div>Не удалось загрузить плейлист, попробуйте позже</div>
-        ) : (
-
               <TrackList 
               loading={loading}
               tracks={tracks}
-              handleCurrentTrack={handleCurrentTrack}
+              // handleCurrentTrack={handleCurrentTrack}
               loadingTracksError={loadingTracksError}
                />
-
-               )}
-      
-            <SideBar loading={loading}  loadingTracksError={loadingTracksError}/>
-       
-          {currentTrack && (
-          <AudioPlayer loading={loading}  currentTrack={currentTrack} />
-          )}
-     
-        
-    
         </>
   );
 };
