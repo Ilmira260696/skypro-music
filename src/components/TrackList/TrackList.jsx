@@ -46,9 +46,9 @@ function TrackList({ loading, title,loadingTracksError, isFavorites, tracks }) {
   };
 return (
   <>
-  {/* <S.CenterBlock> */}
+    <S.centerblockH2 className="centerblock__h2">
   {title || "Треки"}
-  {/* </S.CenterBlock> */}
+  </S.centerblockH2>
   <Filters />
   <TrackListTitle  />
   {loadingTracksError ? (

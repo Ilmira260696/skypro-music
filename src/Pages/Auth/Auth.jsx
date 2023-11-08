@@ -26,7 +26,7 @@ export function AuthPage({ setUser }) {
         setAuth({
           access:token.access,
           refresh:token.refresh,
-          user:JSON.parse(localStorage.item("user")),
+          user:JSON.parse(localStorage.getItem("user")),
         })
       )
     })
