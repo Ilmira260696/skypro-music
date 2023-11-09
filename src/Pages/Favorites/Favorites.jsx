@@ -3,36 +3,35 @@ import React from "react";
 // import TrackListTitle from "../../components/TrackListTitle/TrackListTitle";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {getAllFavoritesTrackQuery} from "../../serviseQuery/tracks";
+import {useGetFavoritesAllTracksQuery} from "../../serviseQuery/tracks";
 import {setCurrentPage} from "../../store/slices/track";
 import { favoritesTracksSelector } from "../../store/selectors/track";
 import TrackList from "../../components/TrackList/TrackList";
-import { setFavouritesTracks } from "../../store/slices/track";
+import setFavoritesTracksAll from "../../store/slices/track";
 
 
  export function Favorites () {
     const dispatch = useDispatch();
-    const {data, loadingTracksError, loading} =getAllFavoritesTrackQuery;
+    const {data, error, loading} =useGetFavoritesAllTracksQuery;
     const favoritesTracks = useSelector(favoritesTracksSelector);
 
     useEffect(()=> {
-        if(data){
-            dispatch(setFavouritesTracks(data));
-            dispatch(setCurrentPage(Favorites));
-        }
-        
+        if(data) {
+            dispatch( setFavoritesTracksAll(data));
+            dispatch(setCurrentPage("Favorites"));
+        }   
     },[data])
     return (
         <>
    <TrackList>
    title = "Мои Треки"
    tracks={favoritesTracks}
-   loadingTracksError={loadingTracksError}
+   error={error}
    loading ={loading}
    isFavorites
    </TrackList>
    {loading && <div>Подождите, идёт загрузка</div>}
-   {loadingTracksError && <div> {loadingTracksError} </div>}
+   {error && <div> {error} </div>}
         </>
     )
    

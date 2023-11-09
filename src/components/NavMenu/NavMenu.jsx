@@ -1,12 +1,10 @@
 import React from "react";
 import * as S from "./NavMenuStyle";
-import { useState } from "react";
+import { useState, useContext  } from "react";
 import { NavMenuItems } from "../NavMenuItems/NavMenuItems";
-import { useContext } from "react";
 import { UserContext } from "../../Context/UserContext";
 
 function NavMenu() {
-
   const [visible, setVisible] = useState(false);
   const toggleVisibility = () => setVisible(!visible);
   const { handleLogout } = useContext(UserContext);

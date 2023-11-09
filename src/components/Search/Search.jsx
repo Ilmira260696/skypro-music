@@ -1,11 +1,8 @@
 import React from "react";
 import *as S  from "./SearchStyle"
 
-
-
 function Seach() {
     return(
-    
       <S.CenterBlockSeach>
         <S.SearchSvg>
             <use xlinkHref="public/img/icon/sprite.svg#icon-search"></use>

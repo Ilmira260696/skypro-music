@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import * as S from "./AuthStyle";
 import { useEffect, useState } from "react";
 import { RegistrationApi, LoginApi } from "../../Api";
@@ -10,6 +10,7 @@ import {useAccessTokenUserMutation} from "../../serviseQuery/token"
 
 export function AuthPage({ setUser }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,7 +42,7 @@ export function AuthPage({ setUser }) {
       localStorage.setItem("user", JSON.stringify(response));
       responseToken();
       setOffButton(true);
-      window.location.href = "/";
+      navigate("/");
     } catch (currentError) {
       setError(currentError.message);
     } finally {
@@ -60,7 +61,7 @@ export function AuthPage({ setUser }) {
         setUser(response);
         localStorage.setItem("user", JSON.stringify(response));
         responseToken();
-        window.location.href = "/";
+        navigate("/");
       } catch (currentError) {
         setError(currentError.message);
         console.log(error);

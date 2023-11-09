@@ -6,4 +6,4 @@ import { Navigate, Outlet } from "react-router-dom";
     return <Navigate to={redirectPath} replace />;
   }
   return <Outlet />
-};
+}

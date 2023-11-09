@@ -6,14 +6,12 @@ import { BarPlayerProgress } from "../BarPlayerProgress/BarPlayerProgress";
 import { AudioPlayerIcons } from "../AudioPlayerIcons/AudioPlayerIcons";
 import { VolumeBlock } from "../VolumeBlock/VolumeBlock";
 import {
-  isPlayingSelector, 
-  allTracksSelector, 
+  isPlayingSelector,
+  currentPlaylistSelector, 
+  // allTracksSelector, 
   indexCurrentTrackSelector,
   shuffleAllTracksSelector,
   shuffleSelector} from "../../store/selectors/track";
-
-
-
 import { 
   setIsPlaying, 
   setNextTrack, 
@@ -23,7 +21,7 @@ import {
 
 function AudioPlayer ({currentTrack, loading}) {
   
-  const tracks = useSelector(allTracksSelector);
+  const tracks = useSelector(currentPlaylistSelector);
   const dispatch = useDispatch();
   const isPlaying = useSelector (isPlayingSelector);
   const shuffle = useSelector(shuffleSelector);
@@ -56,8 +54,7 @@ if (indexCurrentTrack < arrayTracksAll.length-1) {
 }
 dispatch (setIsPlaying(false));
  };
-},
- [currentTrack]);
+},[currentTrack]);
 
   const onLoadedMetadata = () => {
     setDuration(audioRef.current.duration);
@@ -73,7 +70,7 @@ dispatch (setIsPlaying(false));
     setRepeatTrack(!repeatTrack);
   };
 
-  const toggleCurrentTrack =(alt) => {
+  const toggleCurrentTrack = (alt) => {
     if (alt==="next" && indexCurrentTrack < arrayTracksAll.length -1) {
       const indexNextTrack = arrayTracksAll.indexOf(currentTrack)+1;
       return dispatch (setNextTrack({
@@ -82,7 +79,7 @@ dispatch (setIsPlaying(false));
       )
     }
     if(alt === "prev" && indexCurrentTrack > 0 ) {
-      const indexPrevTrack =arrayTracksAll.indexOf(currentTrack)-1;
+      const indexPrevTrack = arrayTracksAll.indexOf(currentTrack)-1;
       return dispatch (setPrevTrack({
         prevTrack:
         arrayTracksAll[indexPrevTrack ], indexPrevTrack,
@@ -125,15 +122,19 @@ dispatch (setIsPlaying(false));
                   toggleCurrentTrack ("next")
                 }}
               />
-              <AudioPlayerIcons alt="repeat" click={toggleTrackRepeat}  />
+              <AudioPlayerIcons 
+              alt="repeat" 
+              click={toggleTrackRepeat}
+               isActive={repeatTrack}  />
               <AudioPlayerIcons
                 alt="shuffle"
                 click={() => {
                   dispatch(toggleShuffleTrack(!shuffle))
                 }}
+                isActive={shuffle}
               />
          </S.PlayerControls>
-            <S.PlayerTrackPlay />
+            <S.PlayerTrackPlay>
             <S.TrackPlayContain>
             <S.TrackPlayImage>
            <S.TrackPlaySvg>
@@ -172,6 +173,7 @@ dispatch (setIsPlaying(false));
               </S.TrackPlayDislikeSvg>
             </S.TrackPlayDislike>
           </S.TrackPlayLikeDis>
+          </S.PlayerTrackPlay>
               </S.BarPlayerPlayer>
             <VolumeBlock  audioRef={audioRef}  />
             </S.BarPlayerBlock>

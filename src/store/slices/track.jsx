@@ -1,3 +1,4 @@
+
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -24,12 +25,12 @@ export const tracksSlice = createSlice({
       state.allTracks = action.payload;
     },
 
-    setFavouritesTracks: (state, action) => {
-      state.favouritesTracks = action.payload;
+    setFavoritesTracksAll: (state, action) => {
+      state.favoritesTracks = action.payload;
     },
 
     setPlayList: (state, action) => {
-    state.currentPage = action.payload;
+    state.currentPlaylist = action.payload;
     },
 
     setCurrentPage: (state, action)=> {

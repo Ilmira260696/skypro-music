@@ -1,21 +1,10 @@
+
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import { setAuth } from '../store/slices/AuthorizationSlice';
 
-/**
- * baseQueryWithReauth – это наша кастомная обертка над fetchBaseQuery, которая умеет обновлять access токен если запрос вернул 401 код.
- * Эта функция подразумевает, что access и refresh токены хранятся в redux сторе auth.
- *
- * args - это параметры конкретного запроса, там лежит url, method и другие параметры запроса
- * api и extraOptions - это доп. параметры с хелперами
- */
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
-      /**
-   * fetchBaseQuery - это обертка от rtk-quert над fetch функцией
-   * fetchBaseQuery возвращает функцию, которую можно воспринимать как аналог fetch или axios функции.
-   * то есть вызов "await baseQuery(...)" можно воспринимать как вызов "await fetch(...)"
-   */
-
+    
     const baseQuery = fetchBaseQuery({
         baseUrl: " https://skypro-music-api.skyeng.tech",
         // prepareHeaders - это часть api fetchBaseQuery, которая позволяет сформировать общие заголовки для всех запросов
@@ -61,7 +50,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   }
 
   // Делаем запрос за новым access токеном в API обновления токена
-  const refreshResult = await baseQuery(
+  const refreshToken = await baseQuery(
     {
       url: "/user/token/refresh/",
       method: "POST",
@@ -73,16 +62,16 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     extraOptions
   );
 
-  console.debug("Результат запроса на обновление токена", { refreshResult });
+  console.debug("Результат запроса на обновление токена", { refreshToken });
 
   // Если api обновления токена не вернуло новый access токен, то ничего сделать мы не можем, разлогиниваем юзера
   // Апи может не вернуть новый access токен по разным причинам, например у нас неверный refresh токен или refresh токен протух (обычно refresh токены не протухаю, но бывает и такое)
-  if (!refreshResult.data.access) {
+  if (!refreshToken.data.access) {
     return forceLogout();
   }
 
   // Мы наконец получили новый access токен, сохраняем его в стор, чтобы последующие запросы могли его использовать внутри prepareHeaders
-  api.dispatch(setAuth({ ...auth, access: refreshResult.data.access }));
+  api.dispatch(setAuth({ ...auth, access: refreshToken.data.access }));
 
   // Делаем повторный запрос с теми же параметрами что и исходный,
   // но помним, что повторный запрос произойдет уже с новым токеном,
@@ -98,7 +87,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 };
 
 export const  tracksQuery = createApi({
-  reducerPath: "playlistApi",
+  reducerPath: "tracksQuery ",
   // Используем кастомную baseQueryWithReauth вместо стандартной fetchBaseQuery
   baseQuery: baseQueryWithReauth,
   tagTypes: ['Tracks', 'Favorites'],
@@ -120,8 +109,6 @@ export const  tracksQuery = createApi({
             {type:"Tracks", id:"LIST"},
           ] : [{type:"Tracks", id:"LIST"}],
         }),
-
-
         setLike:build.mutation({
           query:(track) =>({
             url: `catalog/track/${track.id}/favorite/`,
@@ -154,4 +141,4 @@ export const  tracksQuery = createApi({
 
 
   
-export const { useGetTrackAllQuery,usegetFavoritesAllTracksQuery,useSetLikeMutation, useSetDislikeMutation } = tracksQuery;
+export const { useGetTrackAllQuery,useGetFavoritesAllTracksQuery,useSetLikeMutation, useSetDislikeMutation } = tracksQuery;

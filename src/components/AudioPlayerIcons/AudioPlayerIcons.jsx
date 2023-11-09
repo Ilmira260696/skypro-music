@@ -3,7 +3,7 @@ import { useState } from "react";
 import *as S  from "./AudioPlayerIconsStyle";
 
 export function AudioPlayerIcons(props) {
-const [isActive, setIsActive] = useState(false);
+const [isActive] = useState(false);
   return (
     <S.playerBtn
       $style={props.alt}
@@ -12,7 +12,8 @@ const [isActive, setIsActive] = useState(false);
         event.stopPropagation();
       }}
     >
-      <S.playerBtnSvg $style={props.alt} alt={props.alt} $active={isActive}>
+      <S.playerBtnSvg 
+      $style={props.alt} alt={props.alt} $active={isActive}>
         <use xlinkHref={`img/icon/sprite.svg#icon-${props.alt}`} />
       </S.playerBtnSvg>
     </S.playerBtn>

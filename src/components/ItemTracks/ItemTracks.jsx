@@ -4,15 +4,17 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import {currentTrackSelector,  isPlayingSelector } from "../../store/selectors/track";
 import { AudioPlayerIcons } from "../AudioPlayerIcons/AudioPlayerIcons";
-import {useSetLikeMutation, useSetDisLikeMutation} from "../../serviseQuery/tracks";
+import {useSetLikeMutation, useSetDislikeMutation } from "../../serviseQuery/tracks";
 
-export function ItemTracks ({track, loading,  isFavorites=false}) {
+export function ItemTracks ({track, loading,  isFavorites = false}) {
     const currentTrack = useSelector (currentTrackSelector);
     const isPlaying = useSelector (isPlayingSelector);
-    const setLike = useSetLikeMutation();
-    const setDisLike = useSetDisLikeMutation();
+    const [setLike] = useSetLikeMutation();
+    const [setDislike] = useSetDislikeMutation();
     const auth = JSON.parse(localStorage.getItem("user"));
-    const isUserLike = Boolean (track?.stared_user?.find((user)=>user.id===auth.id));
+    const isUserLike = Boolean(
+      track?.stared_user?.find((user) => user.id === auth.id)
+    );
     const[isLiked, setIsLiked] =useState(isUserLike);
 
     useEffect(()=>{
@@ -23,23 +25,23 @@ export function ItemTracks ({track, loading,  isFavorites=false}) {
         }
     },[isUserLike,isFavorites ]);
 
-    const handleLike = async(id)=>{
+    const handleLike = async(id)=> {
         setIsLiked(true);
         await setLike({id}).unwrap();
     };
 
-    const handleDisLike = async(id)=> {
+    const handleDislike = async(id)=> {
         setIsLiked(false);
-        await setDisLike({id}).unwrap();
+        await setDislike({id}).unwrap();
     };
 
-   const toggleLikeDisLike =(id)=> isLiked? handleLike(id):handleDisLike(id);
+   const toggleLikeDislike =(id) => isLiked? handleLike(id):handleDislike(id);
 
     return (
         <S.PlaylistTrack>
        <S.TrackTitle>
        <S.TrackTitleImg>
-      {currentTrack && currentTrack.id === track.id ? (
+      {currentTrack && currentTrack.id === track?.id ? (
                <S.PointPlaying $playing={isPlaying} />
             ) : (
             <S.TrackTitleSvg alt="music">
@@ -76,16 +78,12 @@ export function ItemTracks ({track, loading,  isFavorites=false}) {
          ) : (
           <S.SkeletonAlbum> </S.SkeletonAlbum>
          )}
-
-         <div className="track__time">
-           <S.TrackTimeSvg alt="time">
-            <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-           </S.TrackTimeSvg>
-           <S.TrackTimeText>
+         {!loading && (
+          <S.TrackTimeText>
             <AudioPlayerIcons
              alt="like"
              click={() => {
-                toggleLikeDisLike(track?.id);
+                toggleLikeDislike(track?.id);
              }}
             isActive={isLiked}
             />
@@ -98,8 +96,12 @@ export function ItemTracks ({track, loading,  isFavorites=false}) {
                 ? "00"
                 : track.duration_in_seconds % 60)}
           </S.TrackTimeText>
-        </div>
+         )}
       </S.PlaylistTrack>
-    )
-    
+    )  
 }
+
+
+         
+         
+           
