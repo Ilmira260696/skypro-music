@@ -13,7 +13,6 @@ function Seach() {
             name="search"
           />
        </S.CenterBlockSeach>
-    
     )  
 }
 export default Seach;

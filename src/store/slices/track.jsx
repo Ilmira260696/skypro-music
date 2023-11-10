@@ -1,23 +1,23 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   allTracks: [],
+  currentPage: "",
   currentTrack: null,
   indexCurrentTrack: null,
   isPlaying: false,
-  shuffle: false,
-  shuffleAllTracks: [],
-  currentPage:'',
-  favouritesTracks:[],
+  shuffled: false,
+  shuffledAllTracks: [],
+  favouritesTracks: [],
+  currentPlaylist: [],
 };
 
-const getShuffleAllTracks = (array) => {
+const getShuffledAllTracks = (array) => {
   const arrayTracks = new Array(...array);
   return arrayTracks.sort(() => Math.random() - 0.5);
 };
 
-export const tracksSlice = createSlice({
+export const trackSlice = createSlice({
   name: "tracksReducer",
   initialState,
   reducers: {
@@ -25,49 +25,61 @@ export const tracksSlice = createSlice({
       state.allTracks = action.payload;
     },
 
-    setFavoritesTracksAll: (state, action) => {
-      state.favoritesTracks = action.payload;
+    setFavouriteTracksAll: (state, action) => {
+      state.favouritesTracks = action.payload;
     },
 
-    setPlayList: (state, action) => {
-    state.currentPlaylist = action.payload;
-    },
-
-    setCurrentPage: (state, action)=> {
-    state.currentPage = action.payload;
-    },
     setIsPlaying: (state, action) => {
-        state.isPlaying = action.payload;
+      state.isPlaying = action.payload;
     },
 
-      setCurrentTrack: (state, action) => {
-        const { track, indexCurrentTrack } = action.payload;
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+    setCurrentPlaylist: (state, action) => {
+      state.currentPlaylist = action.payload;
+    },
+
+    setCurrentTrack: (state, action) => {
+      const { track, indexCurrentTrack } = action.payload;
       state.currentTrack = track;
       state.indexCurrentTrack = indexCurrentTrack;
     },
 
-      setNextTrack: (state, action) => {
-        const {indexNextTrack, nextTrack} = action.payload;
-        state.currentTrack = nextTrack;
-        state.indexCurrentTrack = indexNextTrack;
-      },
+    setNextTrack: (state, action) => {
+      const { trackNext, indexNextTrack } = action.payload;
+      state.currentTrack = trackNext;
+      state.indexCurrentTrack = indexNextTrack;
+    },
 
-      setPrevTrack: (state, action) => {
-        const {indexPrevTrack, prevTrack} = action.payload;
-        state.currentTrack = prevTrack;
-        state.indexCurrentTrack =  indexPrevTrack;
-      },
+    setPrevTrack: (state, action) => {
+      const { trackPred, indexPredTrack } = action.payload;
+      state.currentTrack = trackPred;
+      state.indexCurrentTrack = indexPredTrack;
+    },
 
-      toggleShuffleTrack: (state, action) => {
-      //  state.shuffle = action.payload;
-        //  const {shuffle} = action.payload;
-        state.shuffle = action.payload;
-       state.shuffleAllTracks = state.shuffle && getShuffleAllTracks(state.allTracks)
+    toggleShuffleTracks: (state, action) => {
+      state.shuffled = action.payload;
+
+      if (state.shuffled) {
       }
-   
-}
-  });
+      state.shuffledAllTracks =
+        state.shuffled && getShuffledAllTracks(state.currentPlaylist);
+    },
+  },
+});
 
-  export const { setAllTracks,setFavouritesTracks, setPlayList,setCurrentPage,setIsPlaying, setCurrentTrack, setNextTrack, setPrevTrack, toggleShuffleTrack} = tracksSlice.actions;
-  export default tracksSlice.reducer;
-   
+export const {
+  setAllTracks,
+  setTracksRedux,
+  setCurrentTrack,
+  setNextTrack,
+  setPrevTrack,
+  setIsPlaying,
+  toggleShuffleTracks,
+  setFavouriteTracksAll,
+  setCurrentPage,
+  setCurrentPlaylist,
+} = trackSlice.actions;
+
+export default trackSlice.reducer;

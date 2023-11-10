@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Main from "./Pages/Main/MainPage";
+import {Main} from "./Pages/Main/MainPage";
 import { Favorites } from "./Pages/Favorites/Favorites";
 import { NotFound } from "./Pages/NotFound/NotFound";
 import { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";

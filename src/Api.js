@@ -1,5 +1,5 @@
 
-export async function GetAllTracks() {
+export async function getTracksAll() {
   const response = await fetch(
     "https://skypro-music-api.skyeng.tech/catalog/track/all/",
     {
@@ -24,27 +24,25 @@ export async function RegistrationApi(email, password) {
     headers: {
       "content-type": "application/json",
     },
-  })
-    .then((response) => {
-      if (response.status === 400) {
-        return response.json().then((errorResponse) => {
-          if (errorResponse.username) {
-            throw new Error(errorResponse.username);
-          }
-          if (errorResponse.email) {
-            throw new Error(errorResponse.email);
-          }
-          if (errorResponse.password) {
-            throw new Error(errorResponse.password);
-          }
-        });
-      }
-      if (response.status === 500) {
-        throw new Error("Сервер сломался");
-      }
-      return response.json();
-    })
-    
+  }).then((response) => {
+    if (response.status === 400) {
+      return response.json().then((errorResponse) => {
+        if (errorResponse.username) {
+          throw new Error(errorResponse.username);
+        }
+        if (errorResponse.email) {
+          throw new Error(errorResponse.email);
+        }
+        if (errorResponse.password) {
+          throw new Error(errorResponse.password);
+        }
+      });
+    }
+    if (response.status === 500) {
+      throw new Error("Сервер сломался");
+    }
+    return response.json();
+  });
 }
 
 export async function LoginApi(email, password) {
@@ -57,24 +55,25 @@ export async function LoginApi(email, password) {
     headers: {
       "content-type": "application/json",
     },
-  })
-    .then((response) => {
-      if (response.status === 400) {
-        return response.json().then((errorResponse) => {
-          if (errorResponse.email) {
-            throw new Error(errorResponse.email);
-          }
-          if (errorResponse.password) {
-            throw new Error(errorResponse.password);
-          }
-          throw new Error("Произошла неизвестная ошибка.");
-        });
-      }
-      if (response.status === 401) {
-        return response.json().then((errorResponse) => {
-          throw new Error(errorResponse.detail);
-        });
-      }
-      return response.json();
-    })  
+  }).then((response) => {
+    console.log("response", response);
+    if (response.status === 400) {
+      return response.json().then((errorResponse) => {
+        if (errorResponse.email) {
+          throw new Error(errorResponse.email);
+        }
+        if (errorResponse.password) {
+          throw new Error(errorResponse.password);
+        }
+        throw new Error("Произошла неизвестная ошибка.");
+      });
+    }
+    if (response.status === 401) {
+      return response.json().then((errorResponse) => {
+        throw new Error(errorResponse.detail);
+      });
+      
+    }
+    return response.json();
+  });
 }

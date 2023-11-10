@@ -1,14 +1,15 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export const centerblockH2 = styled.h2`
-font-style: normal;
-font-weight: 400;
-font-size: 64px;
-line-height: 72px;
-letter-spacing: -0.8px;
-margin-bottom: 45px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  letter-spacing: -0.8px;
+  margin-bottom: 45px;
 `;
-export const CenterblockContent = styled.div`
+
+export const centerblockContent = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -17,7 +18,8 @@ export const CenterblockContent = styled.div`
   -ms-flex-direction: column;
   flex-direction: column;
 `;
-export const ContentPlaylist = styled.ul `
+
+export const contentPlaylist = styled.ul`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,15 +28,10 @@ export const ContentPlaylist = styled.ul `
   -ms-flex-direction: column;
   flex-direction: column;
   overflow-y: auto;
-  `;
-  export const PlaylistItem = styled.div `
+`;
+
+export const playlistItem = styled.li`
   width: 100%;
   display: block;
   margin-bottom: 12px;
-  `;
-
-
-
-  
-
-
+`;

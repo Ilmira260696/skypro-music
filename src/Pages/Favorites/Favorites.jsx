@@ -3,36 +3,35 @@ import React from "react";
 // import TrackListTitle from "../../components/TrackListTitle/TrackListTitle";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {useGetFavoritesAllTracksQuery} from "../../serviseQuery/tracks";
-import {setCurrentPage} from "../../store/slices/track";
-import { favoritesTracksSelector } from "../../store/selectors/track";
-import TrackList from "../../components/TrackList/TrackList";
-import setFavoritesTracksAll from "../../store/slices/track";
+import { useGetFavouriteTracksAllQuery} from "../../serviseQuery/tracks";
+import { setFavouriteTracksAll, setCurrentPage,} from "../../store/slices/track";
+import {  favouritesTracksSelector } from "../../store/selectors/track";
+import {TrackList} from "../../components/TrackList/TrackList";
 
 
- export function Favorites () {
-    const dispatch = useDispatch();
-    const {data, error, loading} =useGetFavoritesAllTracksQuery;
-    const favoritesTracks = useSelector(favoritesTracksSelector);
+export function Favorites() {
+  const dispatch = useDispatch();
+  const { data, error, isLoading } = useGetFavouriteTracksAllQuery();
+  const favouritesTracks = useSelector(favouritesTracksSelector);
 
-    useEffect(()=> {
-        if(data) {
-            dispatch( setFavoritesTracksAll(data));
-            dispatch(setCurrentPage("Favorites"));
-        }   
-    },[data])
-    return (
-        <>
-   <TrackList>
-   title = "Мои Треки"
-   tracks={favoritesTracks}
-   error={error}
-   loading ={loading}
-   isFavorites
-   </TrackList>
-   {loading && <div>Подождите, идёт загрузка</div>}
-   {error && <div> {error} </div>}
-        </>
-    )
-   
- }
+  useEffect(() => {
+    if (data) {
+      dispatch(setFavouriteTracksAll(data));
+      dispatch(setCurrentPage("Favorites"));
+    }
+  }, [data]);
+
+  return (
+    <>
+      <TrackList
+        title="Мои треки"
+        tracks={favouritesTracks}
+        error={error}
+        isLoading={isLoading}
+        isFavorites
+      />
+      {isLoading && <div>Загрузка...</div>}
+      {error && <div>{error}</div>}
+    </>
+  );
+}

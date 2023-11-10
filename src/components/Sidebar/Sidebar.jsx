@@ -22,7 +22,7 @@ function SideBar({ loading, loadingTracksError}) {
   return (
     <S.MainSidebar>
     <S.SidebarPersonal>
-          <S.SidebarPersonalName>{user.username}</S.SidebarPersonalName>
+          <S.SidebarPersonalName>{user}</S.SidebarPersonalName>
           <S.SidebarIcon onClick={handleLogout} >
             <svg alt="logout">
               <use xlinkHref="img/icon/sprite.svg#logout" />

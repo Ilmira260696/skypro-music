@@ -10,7 +10,7 @@ export function NavMenuItems(props) {
         onClick={props.handleLogout}
         >
 
-          {/* {props.item.text} */}
+          {props.item.text}
        
         </S.menuLink>
     </S.MenuItem>
