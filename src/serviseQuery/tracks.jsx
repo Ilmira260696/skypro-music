@@ -1,4 +1,3 @@
-
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import { setAuth } from '../store/slices/AuthorizationSlice';
 

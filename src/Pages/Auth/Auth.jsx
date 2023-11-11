@@ -1,27 +1,49 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as S from "./AuthStyle";
 import { useEffect, useState } from "react";
 import { RegistrationApi, LoginApi } from "../../Api";
+import {useAccessTokenUserMutation} from "../../serviseQuery/token";
+import {setAuth} from "../../store/slices/AuthorizationSlice";
+import { useDispatch } from "react-redux";
 
 
 export function AuthPage({ setUser }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [offButton, setOffButton] = useState(false);
   const [isLoginMode, setIsLoginMode] = useState(false);
+  const [postToken] = useAccessTokenUserMutation();
+ 
+
+  const responseToken = async () => {
+    await postToken({ email, password })
+      .unwrap()
+      .then((token) => {
+        console.log("token", token);
+        dispatch(
+          setAuth({
+            access: token.access,
+            refresh: token.refresh,
+            user: JSON.parse(localStorage.getItem("user")),
+          })
+        );
+      });
+  };
 
   const handleLogin = async () => {
     try {
       const response = await LoginApi(email, password);
-      console.log(email);
-      console.log(response.username);
       setUser(response.username);
       localStorage.setItem("user", JSON.stringify(response.username));
+      responseToken();
       setOffButton(true);
-      window.location.href = "/";
+      navigate("/");
     } catch (currentError) {
       setError(currentError.message);
     } finally {
@@ -35,11 +57,11 @@ export function AuthPage({ setUser }) {
     } else {
       try {
         const response = await RegistrationApi(email, password);
-        console.log(response);
         setOffButton(true);
         setUser(response.username);
-        localStorage.setItem("user", response.username);
-        window.location.href = "/";
+        localStorage.setItem("user",JSON.stringify(response.username));
+        responseToken();
+        navigate("/");
       } catch (currentError) {
         setError(currentError.message);
         console.log(error);

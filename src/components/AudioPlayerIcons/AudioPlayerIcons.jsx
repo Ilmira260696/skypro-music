@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import *as S  from "./AudioPlayerIconsStyle";
 
 export function AudioPlayerIcons(props) {

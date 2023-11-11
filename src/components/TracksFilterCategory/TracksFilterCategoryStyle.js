@@ -88,3 +88,20 @@ overflow-y: auto;
   
   }
 `;
+
+export const selectedFilterCount = styled.div`
+  background-color: #ad61ff;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 13px; /* 100% */
+`;

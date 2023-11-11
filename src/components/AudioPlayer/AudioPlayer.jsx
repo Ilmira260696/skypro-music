@@ -185,4 +185,4 @@ import {
         </S.barContent>
       </S.bar>
     );
-  }
+                  }
