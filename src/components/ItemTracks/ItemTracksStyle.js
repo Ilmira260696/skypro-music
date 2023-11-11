@@ -20,6 +20,7 @@ export const Skeleton = styled.div`
 `;
 export const skeletonAlbum = styled(Skeleton)`
   width: 100px;
+  padding-left:50px;
 `;
 export const SkeletonSidebar = styled(Skeleton)`
   width: 250px;
@@ -27,6 +28,11 @@ export const SkeletonSidebar = styled(Skeleton)`
 `;
 export const SkeletonPlayBar = styled(Skeleton)`
   width: 50px;
+`;
+export const SkeletonAuthor = styled (Skeleton) `
+width: 271px;
+height: 19px;
+// padding-right: 286px;
 `;
 
 export const contentPlaylist = styled.ul`
@@ -46,7 +52,7 @@ export const playlistItem = styled.li`
   margin-bottom: 12px;
 `;
 
-export const playlistTrack = styled.div`
+export const PlaylistTrack = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

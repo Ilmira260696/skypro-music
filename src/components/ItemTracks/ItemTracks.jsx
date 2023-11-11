@@ -41,7 +41,7 @@ export function ItemTracks ({ track, isLoading, isFavorites = false}) {
     isLiked ? handleDislike(id) : handleLike(id);
 
   return (
-    <S.playlistTrack>
+    <S.PlaylistTrack>
       <S.trackTitle>
         <S.trackTitleImage>
           {currentTrack && currentTrack.id === track?.id ? (
@@ -93,18 +93,16 @@ export function ItemTracks ({ track, isLoading, isFavorites = false}) {
             }}
             isActive={isLiked}
           />
-          <S.trackTimeText>
-          {Math.floor(track.duration_in_seconds / 60) +
+          <S.trackTimeText>  {Math.floor(track.duration_in_seconds / 60) +
               ":" +
               (track.duration_in_seconds % 60 < 10
                 ? (track.duration_in_seconds % 60) + "0"
                 : track.duration_in_seconds % 60) ||
               (track.duration_in_seconds % 60 === 0
                 ? "00"
-                : track.duration_in_seconds % 60)}
-          </S.trackTimeText>
+                : track.duration_in_seconds % 60)}</S.trackTimeText>
         </S.trackTime>
       )}
-    </S.playlistTrack>
+    </S.PlaylistTrack>
   );
 }

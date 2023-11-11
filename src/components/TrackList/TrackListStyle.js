@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const centerblockH2 = styled.h2`
+export const CenterblockH2 = styled.h2`
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
@@ -9,7 +9,7 @@ export const centerblockH2 = styled.h2`
   margin-bottom: 45px;
 `;
 
-export const centerblockContent = styled.div`
+export const CenterblockContent = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,7 +19,7 @@ export const centerblockContent = styled.div`
   flex-direction: column;
 `;
 
-export const contentPlaylist = styled.ul`
+export const ContentPlaylist = styled.ul`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -30,7 +30,7 @@ export const contentPlaylist = styled.ul`
   overflow-y: auto;
 `;
 
-export const playlistItem = styled.li`
+export const PlaylistItem = styled.li`
   width: 100%;
   display: block;
   margin-bottom: 12px;

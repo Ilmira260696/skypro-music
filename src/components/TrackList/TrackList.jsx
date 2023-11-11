@@ -50,16 +50,16 @@ import {   shuffledSelector,
   
     return (
       <>
-        <S.centerblockH2 className="centerblock__h2">
+        <S.CenterblockH2 className="centerblock__h2">
           {title || "Треки"}
-        </S.centerblockH2>
+        </S.CenterblockH2>
         <Filters />
-        <S.centerblockContent>
+        <S.CenterblockContent>
           <TrackListTitle />
           {error ? (
             <div>Не удалось загрузить плейлист, попробуйте позже</div>
           ) : (
-            <S.contentPlaylist>
+            <S.ContentPlaylist>
               {isLoading &&
                 new Array(20)
                   .fill()
@@ -68,7 +68,7 @@ import {   shuffledSelector,
                   ))}
               {tracks &&
                 tracks.map((track) => (
-                  <S.playlistItem
+                  <S.PlaylistItem
                     key={track.id}
                     onClick={() => handleCurrentTrack(track)}
                   >
@@ -80,11 +80,13 @@ import {   shuffledSelector,
                       tracks={tracks}
                       isFavorites={isFavorites}
                     />
-                  </S.playlistItem>
+                  </S.PlaylistItem>
                 ))}
-            </S.contentPlaylist>
+            </S.ContentPlaylist>
           )}
-        </S.centerblockContent>
+        </S.CenterblockContent>
       </>
     );
   }
+
+

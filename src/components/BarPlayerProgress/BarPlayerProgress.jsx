@@ -21,3 +21,6 @@ export function BarPlayerProgress ({ duration, timeProgress, audioRef }) {
         </>
       );
 }
+
+
+

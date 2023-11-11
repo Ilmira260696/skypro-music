@@ -68,8 +68,6 @@ export const barPlayer = styled.div`
   justify-content: flex-start;
 `;
 
-
-
 export const playerControls = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
@@ -160,7 +158,6 @@ export const trackPlayAlbumLink = styled.a`
   line-height: 24px;
   color: #ffffff;
 `;
-
 export const trackPlayLikeDis = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
@@ -176,27 +173,27 @@ export const trackPlayLikeDis = styled.div`
 `;
 
 export const btnIcon = styled.div`
-  &:hover svg {
+  &::hover svg {
     fill: transparent;
     stroke: #acacac;
     cursor: pointer;
   }
 
-  &:active svg {
+  &::active svg {
     border-color: #ad61ff;
-    color: #ad61ff;
+    color: #b672ff
     cursor: pointer;
   }
 
-  &:active svg {
+  &::active svg {
     fill: transparent;
     stroke: #ffffff;
     cursor: pointer;
   }
 
-  &:active svg {
+  &::active svg {
     fill: #696969;
-    stroke: #ffffff;
+    stroke: #grey;
     cursor: pointer;
   }
 `;
@@ -206,18 +203,18 @@ export const trackPlayLike = styled(btnIcon)`
 `;
 export const trackPlayDislike = styled(btnIcon)`
   padding: 5px;
-  margin-left: 28.5px;
+  margin-left: 28px;
 `;
 
 export const trackPlayLikeSvg = styled.svg`
-  width: 14px;
+  width: 12px;
   height: 12px;
   fill: transparent;
   stroke: #696969;
 `;
 export const trackPlayDislikeSvg = styled.svg`
-  width: 14.34px;
-  height: 13px;
+  width: 12px;
+  height: 12px;
   fill: transparent;
   stroke: #696969;
 `;
