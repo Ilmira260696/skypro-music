@@ -106,6 +106,16 @@ export const tracksQuery = createApi({
         { type: "Tracks", id: "LIST" },
       ],
     }),
+    getSelections: build.query({
+      query: (id) => `catalog/selection/${id}/`,
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.items.map(({ id }) => ({ type: "Selections", id })),
+              { type: "Selections", id: "LIST" },
+            ]
+          : [{ type: "Selections", id: "LIST" }],
+    }),
   }),
 });
 
@@ -114,4 +124,5 @@ export const {
   useGetFavouriteTracksAllQuery,
   useSetLikeMutation,
   useSetDislikeMutation,
+  useGetSelectionsQuery,
 } = tracksQuery;

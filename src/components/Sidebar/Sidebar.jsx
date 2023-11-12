@@ -18,7 +18,8 @@ function SideBar({ loading, loadingTracksError}) {
     </S.SidebarItem>
   ));
 
-  const { user, handleLogout } = useContext(UserContext);
+  const {handleLogout } = useContext(UserContext);
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <S.MainSidebar>
     <S.SidebarPersonal>

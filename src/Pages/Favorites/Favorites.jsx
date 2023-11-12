@@ -5,14 +5,28 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetFavouriteTracksAllQuery} from "../../serviseQuery/tracks";
 import { setFavouriteTracksAll, setCurrentPage,} from "../../store/slices/track";
-import {  favouritesTracksSelector } from "../../store/selectors/track";
+import {  favouritesTracksSelector,  filtersPlaylistSelector} from "../../store/selectors/track";
 import {TrackList} from "../../components/TrackList/TrackList";
 
 
 export function Favorites() {
   const dispatch = useDispatch();
+  const filtred = useSelector(filtersPlaylistSelector);
   const { data, error, isLoading } = useGetFavouriteTracksAllQuery();
   const favouritesTracks = useSelector(favouritesTracksSelector);
+
+  const tracks =
+    filtred?.isActiveSort ||
+    filtred?.isActiveAuthors ||
+    filtred?.isActiveGenres ||
+    filtred?.isActiveSearch
+      ? filtred?.filterTracksArr
+      : favouritesTracks;
+
+      useEffect(() => {
+        dispatch(setFavouriteTracksAll(data));
+      }, [filtred.isActiveSort, tracks]);
+
 
   useEffect(() => {
     if (data) {
@@ -30,8 +44,8 @@ export function Favorites() {
         isLoading={isLoading}
         isFavorites
       />
-      {isLoading && <div>Загрузка...</div>}
-      {error && <div>{error}</div>}
+      {/* {isLoading && <div>Загрузка...</div>}
+      {error && <div>{error}</div>} */}
     </>
   );
 }

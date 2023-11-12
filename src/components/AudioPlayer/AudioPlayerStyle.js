@@ -173,48 +173,47 @@ export const trackPlayLikeDis = styled.div`
 `;
 
 export const btnIcon = styled.div`
-  &::hover svg {
+  &:hover svg {
     fill: transparent;
     stroke: #acacac;
     cursor: pointer;
   }
 
-  &::active svg {
+  &:active svg {
     border-color: #ad61ff;
-    color: #b672ff
+    color: #ad61ff;
     cursor: pointer;
   }
 
-  &::active svg {
+  &:active svg {
     fill: transparent;
     stroke: #ffffff;
     cursor: pointer;
   }
 
-  &::active svg {
+  &:active svg {
     fill: #696969;
-    stroke: #grey;
+    stroke: #ffffff;
     cursor: pointer;
   }
 `;
-
 export const trackPlayLike = styled(btnIcon)`
   padding: 5px;
 `;
 export const trackPlayDislike = styled(btnIcon)`
   padding: 5px;
-  margin-left: 28px;
+  margin-left: 28.5px;
 `;
 
 export const trackPlayLikeSvg = styled.svg`
-  width: 12px;
+  width: 14px;
   height: 12px;
   fill: transparent;
   stroke: #696969;
 `;
 export const trackPlayDislikeSvg = styled.svg`
-  width: 12px;
-  height: 12px;
+  width: 14.34px;
+  height: 13px;
   fill: transparent;
   stroke: #696969;
 `;

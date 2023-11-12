@@ -1,25 +1,14 @@
 import React from "react";
 import * as S from "./TrackListStyle";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useEffect } from "react";
 import Filters from "../../components/Filters/Filters";
 import TrackListTitle from "../../components/TrackListTitle/TrackListTitle";
 import {ItemTracks} from "../../components/ItemTracks/ItemTracks";
+import {shuffledSelector,currentPlaylistSelector, shuffledAllTracksSelector, currentPageSelector, allTracksSelector,favouritesTracksSelector,categoryArrSelector,filtersPlaylistSelector,} from "../../store/selectors/track";
+import { setCurrentTrack,setCurrentPlaylist, toggleShuffleTracks, setFilterPlaylist} from "../../store/slices/track";
 
-import {   shuffledSelector,
-  currentPlaylistSelector,
-  shuffledAllTracksSelector,
-  currentPageSelector,
-  allTracksSelector,
-  favouritesTracksSelector,
-  } from "../../store/selectors/track";
-
-  import {   setCurrentTrack,
-    setCurrentPlaylist,
-    toggleShuffleTracks,} from "../../store/slices/track";
-
-
-  export function TrackList({ title, error, isLoading, tracks, isFavorites }) {
+export function TrackList({ title, error, isLoading, tracks, isFavorites }) {
     const dispatch = useDispatch();
     const shuffle = useSelector(shuffledSelector);
     const allTracks = useSelector(allTracksSelector);
@@ -27,9 +16,21 @@ import {   shuffledSelector,
     const currentPlaylist = useSelector(currentPlaylistSelector);
     const shuffleAllTracks = useSelector(shuffledAllTracksSelector);
     const currentPage = useSelector(currentPageSelector);
+    const categoryArr = useSelector(categoryArrSelector);
     const arrayTracksAll = shuffle ? shuffleAllTracks : currentPlaylist;
+    const filtersPlaylist = useSelector(filtersPlaylistSelector);
+
+
+    useEffect(() => {
+      dispatch(setFilterPlaylist({ sort: "По умолчанию" }));
+      dispatch(setFilterPlaylist({ search: "" }));
+      dispatch(setFilterPlaylist({ authors: "" }));
+      dispatch(setFilterPlaylist({ genres: "" }));
+    }, [title]);
+  
   
     const handleCurrentTrack = (track) => {
+      if (!filtersPlaylist.isActiveSort && !filtersPlaylist?.isActiveAuthors) {
    
       if (currentPage === "Main") {
         dispatch(setCurrentPlaylist(allTracks));
@@ -37,7 +38,12 @@ import {   shuffledSelector,
       if (currentPage === "Favorites") {
         dispatch(setCurrentPlaylist(favouritesTracks));
       }
-    
+      if (currentPage === "Category") {
+        dispatch(setCurrentPlaylist(categoryArr));
+      }
+    } else {
+      dispatch(setCurrentPlaylist(filtersPlaylist.filterTracksArr));
+    }
   
       if (shuffle) {
         dispatch(toggleShuffleTracks({ shuffle }));
@@ -53,7 +59,15 @@ import {   shuffledSelector,
         <S.CenterblockH2 className="centerblock__h2">
           {title || "Треки"}
         </S.CenterblockH2>
-        <Filters />
+        <Filters 
+        selectedArrListFilter={
+          currentPage === "Main"
+            ? allTracks
+            : currentPage === "Favourites"
+            ? favouritesTracks
+            : categoryArr
+        }
+        currentPage={currentPage}/>
         <S.CenterblockContent>
           <TrackListTitle />
           {error ? (

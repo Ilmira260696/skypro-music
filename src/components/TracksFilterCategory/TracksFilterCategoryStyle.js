@@ -4,26 +4,35 @@ export const FilterCategoryName = styled.div `
 display: flex;
 flex-direction: column;
 position: relative;
+&:not(:last-child) {
+  margin-right: 10px;
+}
 `;
 
 export const FilterButton = styled.button `
 font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-border: 1px solid #ffffff;
-border-radius: 60px;
-padding: 6px 20px;
-background: none;
-color: #ffffff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px solid #ffffff;
+  border-radius: 60px;
+  padding: 6px 20px;
+  background: none;
+  color: #ffffff;
+  border-color: ${(props) => (props.$activeStyle ? "#ad61ff" : "white")};
+  color: ${(props) => (props.$activeStyle ? "#ad61ff" : "white")};
 
-&:hover {
+  &:hover {
     border-color: #d9b6ff;
     color: #d9b6ff;
     cursor: pointer;
+  &:active {
+    border-color: #ad61ff;
+    color: #ad61ff;
+    cursor: pointer;
   }
-
 `;
+
 
 export const FilterButtonActive = styled(FilterButton) `
 border-color: #ad61ff;
@@ -73,21 +82,23 @@ line-height: 24px; /* 120% */
 overflow-y: auto;
 
 &::-webkit-scrollbar {
-    width: 4px;   
- }
+  width: 15px;
+}
 
- &::-webkit-scrollbar-track {
-    background-color: #4b4949;
-    border-radius: 2px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background-color: white;
-    height: 65px;
-  
-  }
+&::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 2px;
+}
+&::-webkit-scrollbar-thumb {
+  border-radius: 9em;
+  background-color: #909090;
+  height: 15px;
+}
+&::-webkit-scrollbar-thumb:active {
+  background-color: #4b4949;
+}
 `;
+
 
 export const selectedFilterCount = styled.div`
   background-color: #ad61ff;

@@ -20,7 +20,7 @@ export const Skeleton = styled.div`
 `;
 export const skeletonAlbum = styled(Skeleton)`
   width: 100px;
-  padding-left:50px;
+  // padding-left:50px;
 `;
 export const SkeletonSidebar = styled(Skeleton)`
   width: 250px;
@@ -32,7 +32,7 @@ export const SkeletonPlayBar = styled(Skeleton)`
 export const SkeletonAuthor = styled (Skeleton) `
 width: 271px;
 height: 19px;
-// padding-right: 286px;
+padding-right: 286px;
 `;
 
 export const contentPlaylist = styled.ul`
@@ -165,6 +165,7 @@ export const trackTimeText = styled.span`
   line-height: 24px;
   text-align: right;
   color: #696969;
+  margin-left: 15px;
 `;
 
 const animationPointPulse = () => css`
@@ -199,3 +200,6 @@ export const trackTimeSvg = styled.svg`
   fill: transparent;
   stroke: #696969;
 `;
+
+
+

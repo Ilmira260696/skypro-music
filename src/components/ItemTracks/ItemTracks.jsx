@@ -93,6 +93,9 @@ export function ItemTracks ({ track, isLoading, isFavorites = false}) {
             }}
             isActive={isLiked}
           />
+
+
+          
           <S.trackTimeText>  {Math.floor(track.duration_in_seconds / 60) +
               ":" +
               (track.duration_in_seconds % 60 < 10
