@@ -11,12 +11,10 @@ import {useSetLikeMutation, useSetDislikeMutation } from "../../serviseQuery/tra
 export function ItemTracks ({ track, isLoading, isFavorites = false}) {
   const currentTrack = useSelector(currentTrackSelector);
   const isPlaying = useSelector(isPlayingSelector);
-
   const [setLike] = useSetLikeMutation();
   const [setDislike] = useSetDislikeMutation();
   const auth = JSON.parse(localStorage.getItem("user"));
-  const isUserLike = Boolean(track?.stared_user?.find((user) => user.id === auth.id)
-  );
+  const isUserLike = Boolean(track?.stared_user?.find((user) => user.id === auth.id));
   const [isLiked, setIsLiked] = useState(isUserLike);
 
   useEffect(() => {
@@ -93,8 +91,6 @@ export function ItemTracks ({ track, isLoading, isFavorites = false}) {
             }}
             isActive={isLiked}
           />
-
-
           
           <S.trackTimeText>  {Math.floor(track.duration_in_seconds / 60) +
               ":" +

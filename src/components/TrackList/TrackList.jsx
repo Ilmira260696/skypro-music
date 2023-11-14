@@ -51,7 +51,6 @@ export function TrackList({ title, error, isLoading, tracks, isFavorites }) {
   
       const indexCurrentTrack = arrayTracksAll.indexOf(track);
       dispatch(setCurrentTrack({ track, indexCurrentTrack }));
-      console.log(track);
     };
   
     return (

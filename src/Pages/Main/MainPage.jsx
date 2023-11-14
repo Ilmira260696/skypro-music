@@ -9,21 +9,21 @@ import  { useGetTracksAllQuery} from "../../serviseQuery/tracks";
 export function Main() {
   const dispatch = useDispatch();
   const tracksAll = useSelector(allTracksSelector);
-  const filtred = useSelector(filtersPlaylistSelector);
+  const filtre = useSelector(filtersPlaylistSelector);
   const { data, isError, isLoading } = useGetTracksAllQuery();
   const tracks =
-    filtred?.isActiveSort ||
-    filtred?.isActiveAuthors ||
-    filtred?.isActiveGenres ||
-    filtred?.isActiveSearch
-      ? filtred?.filterTracksArr
+    filtre?.isActiveSort ||
+    filtre?.isActiveAuthors ||
+    filtre?.isActiveGenres ||
+    filtre?.isActiveSearch
+      ? filtre?.filterTracksArr
       : tracksAll;
 
   useEffect(() => {
       console.log(data);
       dispatch(setAllTracks(data));
    
-  },  [filtred.isActiveSort, tracks]);
+  },  [filtre.isActiveSort, tracks]);
 
   useEffect(()=>{
     if (data) {

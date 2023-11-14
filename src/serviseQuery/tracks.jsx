@@ -7,7 +7,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.access;
 
-      // console.log("accessToken", token);
 
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
@@ -21,14 +20,14 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   if (result?.error?.status !== 401) {
     return result;
   }
-  const LogOut = () => {
+  const Logout = () => {
     api.dispatch(setAuth(null));
   };
 
   const { auth } = api.getState();
 
   if (!auth.refresh) {
-    return LogOut();
+    return Logout();
   }
 
   const refreshToken = await baseQuery(
@@ -44,7 +43,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   );
 
   if (!refreshToken.data.access) {
-    return LogOut();
+    return Logout();
   }
 
   api.dispatch(setAuth({ ...auth, access: refreshToken.data.access }));
@@ -52,7 +51,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   const retryResult = await baseQuery(args, api, extraOptions);
 
   if (retryResult?.error?.status === 401) {
-    return LogOut();
+    return Logout();
   }
   return retryResult;
 };
@@ -62,8 +61,8 @@ export const tracksQuery = createApi({
   tagTypes: ["Tracks", "Favorites"],
   baseQuery: baseQueryWithReauth,
 
-  endpoints: (build) => ({
-    getTracksAll: build.query({
+  endpoints: (builder) => ({
+    getTracksAll: builder.query({
       query: () =>
        "catalog/track/all/",
       providesTags: (result) =>
@@ -74,7 +73,7 @@ export const tracksQuery = createApi({
             ]
           : [{ type: "Tracks", id: "LIST" }],
     }),
-    getFavouriteTracksAll: build.query({
+    getFavouriteTracksAll: builder.query({
       query: () => "catalog/track/favorite/all/",
       providesTags: (result) =>
         result
@@ -85,7 +84,7 @@ export const tracksQuery = createApi({
           : [{ type: "Tracks", id: "LIST" }],
     }),
 
-    setLike: build.mutation({
+    setLike: builder.mutation({
       query: (track) => ({
         url: `catalog/track/${track.id}/favorite/`,
         method: "POST",
@@ -96,7 +95,7 @@ export const tracksQuery = createApi({
       ],
     }),
 
-    setDislike: build.mutation({
+    setDislike: builder.mutation({
       query: (track) => ({
         url: `catalog/track/${track.id}/favorite/`,
         method: "DELETE",
@@ -106,7 +105,7 @@ export const tracksQuery = createApi({
         { type: "Tracks", id: "LIST" },
       ],
     }),
-    getSelections: build.query({
+    getSelections: builder.query({
       query: (id) => `catalog/selection/${id}/`,
       providesTags: (result) =>
         result

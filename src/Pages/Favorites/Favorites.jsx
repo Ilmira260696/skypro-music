@@ -1,6 +1,4 @@
 import React from "react";
-// import * as S from "./FavoritiesStyle";
-// import TrackListTitle from "../../components/TrackListTitle/TrackListTitle";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetFavouriteTracksAllQuery} from "../../serviseQuery/tracks";
@@ -11,21 +9,21 @@ import {TrackList} from "../../components/TrackList/TrackList";
 
 export function Favorites() {
   const dispatch = useDispatch();
-  const filtred = useSelector(filtersPlaylistSelector);
+  const filtre = useSelector(filtersPlaylistSelector);
   const { data, error, isLoading } = useGetFavouriteTracksAllQuery();
   const favouritesTracks = useSelector(favouritesTracksSelector);
 
   const tracks =
-    filtred?.isActiveSort ||
-    filtred?.isActiveAuthors ||
-    filtred?.isActiveGenres ||
-    filtred?.isActiveSearch
-      ? filtred?.filterTracksArr
+    filtre?.isActiveSort ||
+    filtre?.isActiveAuthors ||
+    filtre?.isActiveGenres ||
+    filtre?.isActiveSearch
+      ? filtre?.filterTracksArr
       : favouritesTracks;
 
       useEffect(() => {
         dispatch(setFavouriteTracksAll(data));
-      }, [filtred.isActiveSort, tracks]);
+      }, [filtre.isActiveSort, tracks]);
 
 
   useEffect(() => {
