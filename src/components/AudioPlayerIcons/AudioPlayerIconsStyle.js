@@ -84,6 +84,7 @@ const iconsSvg = {
   fill: ${(props) => (props.$active ? "#B672FF" : "none")};
   stroke: ${(props) => (props.$active ? "#B672FF" : "#696969")};
 `,
+
 };
 
 const playerBtnSvgMixin = (alt) => {

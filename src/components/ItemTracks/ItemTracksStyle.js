@@ -20,7 +20,6 @@ export const Skeleton = styled.div`
 `;
 export const skeletonAlbum = styled(Skeleton)`
   width: 100px;
-  // padding-left:50px;
 `;
 export const SkeletonSidebar = styled(Skeleton)`
   width: 250px;

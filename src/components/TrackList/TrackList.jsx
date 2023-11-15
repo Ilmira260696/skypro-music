@@ -8,7 +8,7 @@ import {ItemTracks} from "../../components/ItemTracks/ItemTracks";
 import {shuffledSelector,currentPlaylistSelector, shuffledAllTracksSelector, currentPageSelector, allTracksSelector,favouritesTracksSelector,categoryArrSelector,filtersPlaylistSelector,} from "../../store/selectors/track";
 import { setCurrentTrack,setCurrentPlaylist, toggleShuffleTracks, setFilterPlaylist} from "../../store/slices/track";
 
-export function TrackList({ title, error, isLoading, tracks, isFavorites }) {
+export function TrackList({ title, error, isLoading, tracks, isFavorites, isMain }) {
     const dispatch = useDispatch();
     const shuffle = useSelector(shuffledSelector);
     const allTracks = useSelector(allTracksSelector);
@@ -92,6 +92,7 @@ export function TrackList({ title, error, isLoading, tracks, isFavorites }) {
                       track={track}
                       tracks={tracks}
                       isFavorites={isFavorites}
+                      isMain={isMain}
                     />
                   </S.PlaylistItem>
                 ))}

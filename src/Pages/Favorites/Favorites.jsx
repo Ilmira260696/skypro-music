@@ -41,6 +41,7 @@ export function Favorites() {
         error={error}
         isLoading={isLoading}
         isFavorites
+        isMain
       />
       {/* {isLoading && <div>Загрузка...</div>}
       {error && <div>{error}</div>} */}

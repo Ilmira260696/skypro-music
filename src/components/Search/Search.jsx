@@ -16,7 +16,6 @@ function Seach() {
             type="search"
             placeholder="Поиск"
             name="search"
-            value={filtersPlaylist.search}
             onChange={(e) => {
               dispatch(
                 setFilterPlaylist({

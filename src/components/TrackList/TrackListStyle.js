@@ -28,6 +28,22 @@ export const ContentPlaylist = styled.ul`
   -ms-flex-direction: column;
   flex-direction: column;
   overflow-y: auto;
+  height: 500px;
+  &::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 2px;
+  }
+  &::-webkit-scrollbar-thumb {
+    box-shadow: inset 1px 1px 10px #f3faf7;
+    background-color: #909090;
+    height: 10px;
+  }
+  &::-webkit-scrollbar-thumb:active {
+    background-color: #4b4949;
+  }
+  &::-webkit-scrollbar-button:vertical:start:decrement {
+    background-color: #909090;
+  }
 `;
 
 export const PlaylistItem = styled.li`

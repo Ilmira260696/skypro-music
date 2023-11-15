@@ -185,9 +185,6 @@ import {useSetLikeMutation,useSetDislikeMutation} from "../../serviseQuery/track
                 </S.trackPlayContain>
                 <S.trackPlayLikeDis>
                   <S.trackPlayLike>
-                    {/* <S.trackPlayLikeSvg alt="like">
-                      <use xlinkHref="img/icon/sprite.svg#icon-like" />
-                    </S.trackPlayLikeSvg> */}
                      <AudioPlayerIcons
                     alt="like"
                     click={() => {

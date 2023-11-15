@@ -6,29 +6,32 @@ import { useEffect, useState } from "react";
 import {currentTrackSelector,  isPlayingSelector } from "../../store/selectors/track";
 import { AudioPlayerIcons } from "../AudioPlayerIcons/AudioPlayerIcons";
 import {useSetLikeMutation, useSetDislikeMutation } from "../../serviseQuery/tracks";
+import {setAllTracks} from "../../store/slices/track";
+import { useDispatch } from "react-redux";
 
 
-export function ItemTracks ({ track, isLoading, isFavorites = false}) {
+export function ItemTracks ({ track, isLoading, isFavorites=false}) {
+  // const dispatch = useDispatch();
   const currentTrack = useSelector(currentTrackSelector);
   const isPlaying = useSelector(isPlayingSelector);
   const [setLike] = useSetLikeMutation();
   const [setDislike] = useSetDislikeMutation();
   const auth = JSON.parse(localStorage.getItem("user"));
-  const isUserLike = Boolean(track?.stared_user?.find((user) => user.id === auth.id));
+  const isUserLike = Boolean( track?.stared_user?.find((user) => user.id === auth.id));
   const [isLiked, setIsLiked] = useState(isUserLike);
 
   useEffect(() => {
     if (isFavorites) {
       setIsLiked(isFavorites);
     } else {
-      setIsLiked(isUserLike);
+      setIsLiked(isFavorites);
     }
   }, [isUserLike, isFavorites]);
 
   const handleLike = async (id) => {
     setIsLiked(true);
     await setLike({ id }).unwrap();
-  }
+  };
 
   const handleDislike = async (id) => {
     setIsLiked(false);
@@ -88,6 +91,7 @@ export function ItemTracks ({ track, isLoading, isFavorites = false}) {
             alt="like"
             click={() => {
               toggleLikeDislike(track?.id);
+              
             }}
             isActive={isLiked}
           />

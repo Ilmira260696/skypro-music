@@ -133,6 +133,7 @@ export const trackPlayAuthor = styled.div`
   -ms-grid-column: 2;
   grid-area: author;
   min-width: 49px;
+  margin-top: 28px;
 `;
 
 export const trackPlayAuthorLink = styled.a`
