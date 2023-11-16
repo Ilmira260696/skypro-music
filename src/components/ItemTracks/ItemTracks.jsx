@@ -18,8 +18,10 @@ export function ItemTracks ({ track, isLoading, isFavorites=false}) {
   const [setDislike] = useSetDislikeMutation();
   const auth = JSON.parse(localStorage.getItem("user", "id"));
   const isUserLike = Boolean(
-    track?.stared_user?.find(({ id }) => id === auth.id)
+    track?.stared_user?.find((user) => user.id === auth.id)
   );
+  console.log(auth.id);
+ 
   const [isLiked, setIsLiked] = useState(isUserLike);
 
   useEffect(() => {
