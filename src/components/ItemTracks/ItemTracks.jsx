@@ -17,16 +17,19 @@ export function ItemTracks ({ track, isLoading, isFavorites=false}) {
   const [setLike] = useSetLikeMutation();
   const [setDislike] = useSetDislikeMutation();
   const auth = JSON.parse(localStorage.getItem("user"));
-  const isUserLike = Boolean( track?.stared_user?.find((user) => user.id === auth.id));
+  const isUserLike = Boolean(
+    track?.stared_user?.find((user) => user.id === auth.id)
+  );
   const [isLiked, setIsLiked] = useState(isUserLike);
 
   useEffect(() => {
     if (isFavorites) {
       setIsLiked(isFavorites);
     } else {
-      setIsLiked(isFavorites);
+      setIsLiked(isUserLike);
+
     }
-  }, [isUserLike, isFavorites]);
+  }, [isUserLike, isFavorites, ]);
 
   const handleLike = async (id) => {
     setIsLiked(true);
@@ -88,12 +91,11 @@ export function ItemTracks ({ track, isLoading, isFavorites=false}) {
       {!isLoading && (
         <S.trackTime>
           <AudioPlayerIcons
-            alt="like"
-            click={() => {
-              toggleLikeDislike(track?.id);
-              
-            }}
-            isActive={isLiked}
+             alt="like"
+             click={() => {
+               toggleLikeDislike(track?.id);
+             }}
+             isActive={isLiked}
           />
           
           <S.trackTimeText>  {Math.floor(track.duration_in_seconds / 60) +

@@ -34,10 +34,4 @@ export function Main() {
 
   return <TrackList isLoading={isLoading} tracks={tracks} error={isError} />;
 }
-  //       setLoading(true);
-  //     }, 5000);
-
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [loading]);
 

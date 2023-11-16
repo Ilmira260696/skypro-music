@@ -71,9 +71,16 @@ export async function LoginApi(email, password) {
     if (response.status === 401) {
       return response.json().then((errorResponse) => {
         throw new Error(errorResponse.detail);
-      });
-      
-    }
+      })
+     
+    };
+    // const myError = new Error('Failed to fetch')
+    // console.log(myError.message)
+   
+    // if (!response.ok) {
+    //   const myError = new Error('Failed to fetch')
+    //   throw new Error(myError.message)
+    // }
     return response.json();
   });
 }
