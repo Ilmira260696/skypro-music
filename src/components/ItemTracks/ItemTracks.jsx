@@ -23,13 +23,12 @@ export function ItemTracks ({ track, isLoading, isFavorites=false}) {
   const [isLiked, setIsLiked] = useState(isUserLike);
 
   useEffect(() => {
-    if (isFavorites) {
-      setIsLiked(isFavorites);
+    if (track?.stared_user) {
+      setIsLiked(isUserLike)
     } else {
-      setIsLiked(isUserLike);
-
+      setIsLiked(true);
     }
-  }, [isUserLike, isFavorites, ]);
+  }, [isUserLike, track?.stared_user]);
 
   const handleLike = async (id) => {
     setIsLiked(true);

@@ -3,27 +3,27 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetFavouriteTracksAllQuery} from "../../serviseQuery/tracks";
 import { setFavouriteTracksAll, setCurrentPage,} from "../../store/slices/track";
-import {  favouritesTracksSelector,  filtersPlaylistSelector} from "../../store/selectors/track";
-import {TrackList} from "../../components/TrackList/TrackList";
+import { favouritesTracksSelector,  filtersPlaylistSelector} from "../../store/selectors/track";
+import { TrackList } from "../../components/TrackList/TrackList";
 
 
 export function Favorites() {
   const dispatch = useDispatch();
-  const filtre = useSelector(filtersPlaylistSelector);
+  const filter = useSelector(filtersPlaylistSelector);
   const { data, error, isLoading } = useGetFavouriteTracksAllQuery();
   const favouritesTracks = useSelector(favouritesTracksSelector);
 
   const tracks =
-    filtre?.isActiveSort ||
-    filtre?.isActiveAuthors ||
-    filtre?.isActiveGenres ||
-    filtre?.isActiveSearch
-      ? filtre?.filterTracksArr
+    filter?.isActiveSort ||
+    filter?.isActiveAuthors ||
+    filter?.isActiveGenres ||
+    filter?.isActiveSearch
+      ? filter?.filterTracksArr
       : favouritesTracks;
 
       useEffect(() => {
         dispatch(setFavouriteTracksAll(data));
-      }, [filtre.isActiveSort, tracks]);
+      }, [filter.isActiveSort, tracks]);
 
 
   useEffect(() => {
@@ -40,11 +40,7 @@ export function Favorites() {
         tracks={favouritesTracks}
         error={error}
         isLoading={isLoading}
-        isFavorites
-        isMain
       />
-      {/* {isLoading && <div>Загрузка...</div>}
-      {error && <div>{error}</div>} */}
     </>
   );
 }

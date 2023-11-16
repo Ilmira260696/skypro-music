@@ -91,8 +91,8 @@ export function TrackList({ title, error, isLoading, tracks, isFavorites, isMain
                       isLoading={isLoading}
                       track={track}
                       tracks={tracks}
-                      isFavorites={isFavorites}
-                      isMain={isMain}
+                      // isFavorites={isFavorites}
+                      // isMain={isMain}
                     />
                   </S.PlaylistItem>
                 ))}
