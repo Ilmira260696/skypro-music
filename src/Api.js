@@ -24,13 +24,22 @@ export async function RegistrationApi(email, password) {
     headers: {
       "content-type": "application/json",
     },
-  }).then((response) => {
+  })
+  .catch((error)=>{
+    if(error.message === "Failed to fetch") {
+      throw new Error('Нет подключения к интернету')
+    }
+  })
+  .then((response) => {
     if (response.status === 400) {
       // const message = "Failed to fetch";
       return response.json()
       // .catch(error => alert(error.message))
-      .catch(error =>alert(`Нет подклчения к интернету. Пожалуйста, проверьте соединение с интернетом и попробуйте перзагрузить страницу`))
+      // .catch(error =>alert(`Нет подклчения к интернету. Пожалуйста, проверьте соединение с интернетом и попробуйте перзагрузить страницу`))
       .then((errorResponse) => {
+        // if(error.message === "Failed to fetch"){
+        //   error('Нет подключения к интернету')
+        // }
         if (errorResponse.username) {
           throw new Error(errorResponse.username);
         }
@@ -60,9 +69,14 @@ export async function LoginApi(email, password) {
       "content-type": "application/json",
     },
   }) 
-  .catch(error =>alert(`Нет подклчения к интернету`))
+  .catch((error)=>{
+    if(error.message === "Failed to fetch") {
+      throw new Error('Нет подключения к интернету')
+    }
+  })
   .then((response) => {
-    console.log("response", response);
+    
+   
     if (response.status === 400) {
       return response.json().then((errorResponse) => {
         if (errorResponse.email) {
