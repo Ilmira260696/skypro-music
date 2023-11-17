@@ -100,5 +100,3 @@ export function TrackList({ title, error, isLoading, tracks, isFavorites, isMain
       </>
     );
   }
-
-

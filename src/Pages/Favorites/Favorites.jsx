@@ -1,11 +1,16 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetFavouriteTracksAllQuery} from "../../serviseQuery/tracks";
-import { setFavouriteTracksAll, setCurrentPage,} from "../../store/slices/track";
-import { favouritesTracksSelector,  filtersPlaylistSelector} from "../../store/selectors/track";
+import { useGetFavouriteTracksAllQuery } from "../../serviseQuery/tracks";
+import {
+  setFavouriteTracksAll,
+  setCurrentPage,
+} from "../../store/slices/track";
+import {
+  favouritesTracksSelector,
+  filtersPlaylistSelector,
+} from "../../store/selectors/track";
 import { TrackList } from "../../components/TrackList/TrackList";
-
 
 export function Favorites() {
   const dispatch = useDispatch();
@@ -21,10 +26,9 @@ export function Favorites() {
       ? filter?.filterTracksArr
       : favouritesTracks;
 
-      useEffect(() => {
-        dispatch(setFavouriteTracksAll(data));
-      }, [filter.isActiveSort, tracks]);
-
+  useEffect(() => {
+    dispatch(setFavouriteTracksAll(data));
+  }, [filter.isActiveSort, tracks]);
 
   useEffect(() => {
     if (data) {
@@ -44,5 +48,3 @@ export function Favorites() {
     </>
   );
 }
-
-

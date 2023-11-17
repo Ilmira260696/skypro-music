@@ -1,12 +1,14 @@
 import React from "react";
-import * as S from "./CategoryStyle";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { TrackList } from "../../components/TrackList/TrackList";
-import {useGetSelectionsQuery }from "../../serviseQuery/tracks";
+import { useGetSelectionsQuery } from "../../serviseQuery/tracks";
 import { setCurrentPage, setCategoryArr } from "../../store/slices/track";
-import { categoryArrSelector, filtersPlaylistSelector} from '../../store/selectors/track';
+import {
+  categoryArrSelector,
+  filtersPlaylistSelector,
+} from "../../store/selectors/track";
 
 export function Category() {
   const categoryArr = useSelector(categoryArrSelector);
@@ -39,4 +41,3 @@ export function Category() {
     />
   );
 }
-

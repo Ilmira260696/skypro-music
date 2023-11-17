@@ -80,8 +80,8 @@ export const PrimaryButton = styled(Button)`
   }
 `;
 
-export const ButtonTwo = styled (Button)`
-color: #000000;
+export const ButtonTwo = styled(Button)`
+  color: #000000;
   background-color: transparent;
   border: 1px solid #d0cece;
 
@@ -93,8 +93,6 @@ color: #000000;
     background-color: #d9d9d9;
   }
 `;
-
-
 
 export const Buttons = styled.div`
   display: flex;

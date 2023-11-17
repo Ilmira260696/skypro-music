@@ -1,6 +1,5 @@
 import styled, { keyframes } from "styled-components";
 
-
 export const blink = keyframes`
   from {
     opacity: 1;
@@ -17,7 +16,6 @@ export const Skeleton = styled.div`
   height: 20px;
   width: 300px;
 `;
-
 export const SkeletonPlayBar = styled(Skeleton)`
   width: 50px;
 `;
@@ -28,7 +26,6 @@ export const bar = styled.div`
   width: 100%;
   background: rgba(28, 28, 28, 0.9);
 `;
-
 export const barContent = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
@@ -38,7 +35,6 @@ export const barContent = styled.div`
   -ms-flex-direction: column;
   flex-direction: column;
 `;
-
 export const barPlayerBlock = styled.div`
   height: 73px;
   display: -webkit-box;
@@ -67,7 +63,6 @@ export const barPlayer = styled.div`
   -ms-flex-pack: start;
   justify-content: flex-start;
 `;
-
 export const playerControls = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
@@ -78,7 +73,6 @@ export const playerControls = styled.div`
   flex-direction: row;
   padding: 0 27px 0 31px;
 `;
-
 export const playerTrackPlay = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
@@ -88,7 +82,6 @@ export const playerTrackPlay = styled.div`
   -ms-flex-direction: row;
   flex-direction: row;
 `;
-
 export const trackPlayContain = styled.div`
   width: auto;
   display: -ms-grid;
@@ -100,7 +93,6 @@ export const trackPlayContain = styled.div`
   -ms-flex-align: center;
   align-items: center;
 `;
-
 export const trackPlayImage = styled.div`
   width: 51px;
   height: 51px;
@@ -120,14 +112,12 @@ export const trackPlayImage = styled.div`
   -ms-grid-column: 1;
   grid-area: image;
 `;
-
 export const trackPlaySvg = styled.svg`
   width: 18px;
   height: 17px;
   fill: transparent;
   stroke: #4e4e4e;
 `;
-
 export const trackPlayAuthor = styled.div`
   -ms-grid-row: 1;
   -ms-grid-column: 2;
@@ -135,7 +125,6 @@ export const trackPlayAuthor = styled.div`
   min-width: 49px;
   margin-top: 28px;
 `;
-
 export const trackPlayAuthorLink = styled.a`
   font-style: normal;
   font-weight: 400;
@@ -144,14 +133,12 @@ export const trackPlayAuthorLink = styled.a`
   color: #ffffff;
   white-space: nowrap;
 `;
-
 export const trackPlayAlbum = styled.div`
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: album;
   min-width: 49px;
 `;
-
 export const trackPlayAlbumLink = styled.a`
   font-style: normal;
   font-weight: 400;
@@ -172,26 +159,22 @@ export const trackPlayLikeDis = styled.div`
   align-items: center;
   margin-left: 26%;
 `;
-
 export const btnIcon = styled.div`
   &:hover svg {
     fill: transparent;
     stroke: #acacac;
     cursor: pointer;
   }
-
   &:active svg {
     border-color: #ad61ff;
     color: #ad61ff;
     cursor: pointer;
   }
-
   &:active svg {
     fill: transparent;
     stroke: #ffffff;
     cursor: pointer;
   }
-
   &:active svg {
     fill: #696969;
     stroke: #ffffff;
@@ -205,7 +188,6 @@ export const trackPlayDislike = styled(btnIcon)`
   padding: 5px;
   margin-left: 28.5px;
 `;
-
 export const trackPlayLikeSvg = styled.svg`
   width: 14px;
   height: 12px;

@@ -1,10 +1,10 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const wrapper = styled.div`
- width: 100%;
- min-height: 100%;
- overflow: hidden;
- background-color: #383838;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  background-color: #383838;
 `;
 
 export const container = styled.div`
@@ -14,5 +14,3 @@ export const container = styled.div`
   position: relative;
   background-color: #181818;
 `;
-
-

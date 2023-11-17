@@ -1,12 +1,11 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import { setAuth } from '../store/slices/AuthorizationSlice';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { setAuth } from "../store/slices/AuthorizationSlice";
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
   const baseQuery = fetchBaseQuery({
     baseUrl: "https://skypro-music-api.skyeng.tech",
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.access;
-
 
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
@@ -63,8 +62,7 @@ export const tracksQuery = createApi({
 
   endpoints: (builder) => ({
     getTracksAll: builder.query({
-      query: () =>
-       "catalog/track/all/",
+      query: () => "catalog/track/all/",
       providesTags: (result) =>
         result
           ? [

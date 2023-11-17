@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./AuthStyle";
 import { useEffect, useState } from "react";
 import { RegistrationApi, LoginApi } from "../../Api";
-import {useAccessTokenUserMutation} from "../../serviseQuery/token";
-import {setAuth} from "../../store/slices/AuthorizationSlice";
+import { useAccessTokenUserMutation } from "../../serviseQuery/token";
+import { setAuth } from "../../store/slices/AuthorizationSlice";
 import { useDispatch } from "react-redux";
-
 
 export function AuthPage({ setUser }) {
   const dispatch = useDispatch();
@@ -19,7 +18,6 @@ export function AuthPage({ setUser }) {
   const [offButton, setOffButton] = useState(false);
   const [isLoginMode, setIsLoginMode] = useState(false);
   const [postToken] = useAccessTokenUserMutation();
- 
 
   const responseToken = async () => {
     await postToken({ email, password })
@@ -40,9 +38,7 @@ export function AuthPage({ setUser }) {
     try {
       const response = await LoginApi(email, password);
       setUser(response);
-     
       localStorage.setItem("user", JSON.stringify(response));
-      
       responseToken();
       setOffButton(true);
       navigate("/");

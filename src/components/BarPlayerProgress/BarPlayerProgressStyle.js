@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const BarPlayerProgressTime = styled.span`
   color: #696969;
@@ -8,12 +8,10 @@ export const BarPlayerProgressTime = styled.span`
   line-height: 18px; /* 112.5% */
   letter-spacing: 0.016px;
 `;
-
 export const BarPlayerProgress = styled.input`
   --progress-height: 5px;
   --progress-color: #b672ff;
   --progress-bg-color: #2e2e2e;
-
   margin: 0;
   width: 100%;
   height: var(--progress-height);
@@ -22,7 +20,6 @@ export const BarPlayerProgress = styled.input`
   background: transparent;
   position: relative;
   overflow: hidden;
-
   &::-webkit-slider-runnable-track {
     position: relative;
     height: var(--progress-height);
@@ -37,12 +34,9 @@ export const BarPlayerProgress = styled.input`
     box-shadow: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0
       100vmax var(--progress-color);
   }
-
   &::-webkit-slider-runnable-track {
     background: var(--progress-bg-color);
   }
-
-  /* FF */
   &::-moz-range-track {
     width: 100%;
     height: var(--progress-height);

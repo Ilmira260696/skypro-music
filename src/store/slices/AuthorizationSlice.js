@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const AUTH_INFO = "auth";
@@ -16,7 +15,6 @@ const initialState = {
   access: null,
   refresh: null,
   user: null,
-
 };
 
 export const authSlice = createSlice({
@@ -29,7 +27,6 @@ export const authSlice = createSlice({
       state.access = access;
       state.refresh = refresh;
       state.user = user;
-     
 
       localStorage.setItem(AUTH_INFO, JSON.stringify(state));
     },

@@ -7,14 +7,12 @@ export const NotFoundBlock = styled.div`
   align-items: center;
 
 `;
-
 export const Problem = styled.div`
   display: flex;
   flex-direction: row;
   gap: 8px;
   margin-top: 500px;
 `;
-
 export const ProblemDis = styled.p`
   color: #fff;
   font-variant-numeric: lining-nums proportional-nums;
@@ -23,7 +21,6 @@ export const ProblemDis = styled.p`
   font-weight: 400;
   line-height: 40px;
 `;
-
 export const GoToMainButton = styled.button`
   width: 278px;
   height: 52px;
@@ -47,10 +44,7 @@ export const GoToMainButton = styled.button`
   &:hover {
     background-color: #3f007d;
   }
-
-  
 `;
-
 export const GoToMainButtonLink = styled.a`
   width: 100%;
   height: 100%;

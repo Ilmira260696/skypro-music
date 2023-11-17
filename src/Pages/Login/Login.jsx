@@ -20,14 +20,15 @@ export const Login = ({ onAuthButtonClick }) => {
               placeholder="Пароль"
             />
 
-            <S.ModalBtnEnter onClick={onAuthButtonClick}  to="/">Войти </S.ModalBtnEnter>
+            <S.ModalBtnEnter onClick={onAuthButtonClick} to="/">
+              Войти{" "}
+            </S.ModalBtnEnter>
             <NavLink to="/Registration">
               <S.ModalBtnSignup> Зарегистрироваться </S.ModalBtnSignup>
             </NavLink>
-            
           </S.ModalFormLogin>
         </S.ModalBlock>
       </S.ContainerEnter>
     </S.wrapper>
   );
-}
+};

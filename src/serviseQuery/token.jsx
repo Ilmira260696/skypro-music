@@ -3,13 +3,12 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const tokenQuery = createApi({
   reducerPath: "tokenQuery",
   tagTypes: ["Tracks"],
- 
+
   baseQuery: fetchBaseQuery({
     baseUrl: "https://skypro-music-api.skyeng.tech/",
   }),
 
   endpoints: (build) => ({
-
     accessTokenUser: build.mutation({
       query: (body) => ({
         url: "user/token/",
@@ -35,7 +34,5 @@ export const tokenQuery = createApi({
   }),
 });
 
-export const {
-  useAccessTokenUserMutation,
-  useRefreshTokenUserMutation,
-} = tokenQuery;
+export const { useAccessTokenUserMutation, useRefreshTokenUserMutation } =
+  tokenQuery;

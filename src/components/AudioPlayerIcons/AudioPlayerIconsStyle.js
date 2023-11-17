@@ -26,12 +26,10 @@ const icons = {
     align-items: center;
   `,
 };
-
 const playerBtnMixin = (alt) => {
   const styles = icons[alt];
   return styles;
 };
-
 export const playerBtn = styled.div`
   padding: 5px;
   display: -webkit-box;
@@ -42,7 +40,6 @@ export const playerBtn = styled.div`
   align-items: center;
   ${(props) => playerBtnMixin(props.$style)};
 `;
-
 const iconsSvg = {
   prev: css`
     width: 15px;
@@ -86,12 +83,10 @@ const iconsSvg = {
 `,
 
 };
-
 const playerBtnSvgMixin = (alt) => {
   const styles = iconsSvg[alt];
   return styles;
 };
-
 export const playerBtnSvg = styled.svg`
   width: 15px;
   height: 14px;

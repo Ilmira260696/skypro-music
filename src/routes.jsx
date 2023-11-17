@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import {Main} from "./Pages/Main/MainPage";
+import { Main } from "./Pages/Main/MainPage";
 import { Favorites } from "./Pages/Favorites/Favorites";
 import { NotFound } from "./Pages/NotFound/NotFound";
 import { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
@@ -12,7 +12,7 @@ export function AppRoutes({ user, setUser }) {
   return (
     <Routes>
       <Route path="/Auth" element={<AuthPage setUser={setUser} />} />
-      
+
       <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Main setUser={setUser} />} />

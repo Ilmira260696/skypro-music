@@ -3,7 +3,6 @@ import * as S from "./ErrorStyle";
 import { NavLink } from "react-router-dom";
 
 export function Error() {
-  
   return (
     <S.NotFoundBlock>
       <S.Problem>
@@ -13,5 +12,5 @@ export function Error() {
         <NavLink to={`/`}>Вернуться на главную</NavLink>
       </S.GoToMainButton>
     </S.NotFoundBlock>
-  )
+  );
 }

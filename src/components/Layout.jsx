@@ -3,15 +3,14 @@ import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import * as S from "../Pages/Main/MainPageStyle";
 import { currentTrackSelector } from "../store/selectors/track";
-import  {NavMenu}  from "./NavMenu/NavMenu";
-import Search  from "./Search/Search";
+import { NavMenu } from "./NavMenu/NavMenu";
+import Search from "./Search/Search";
 import SideBar from "./Sidebar/Sidebar";
-import {AudioPlayer} from "./AudioPlayer/AudioPlayer";
-
+import { AudioPlayer } from "./AudioPlayer/AudioPlayer";
 
 const Layout = ({ loading, loadingTracksError }) => {
   const currentTrack = useSelector(currentTrackSelector);
-  
+
   return (
     <div className="App">
       <S.wrapper>
@@ -34,7 +33,7 @@ const Layout = ({ loading, loadingTracksError }) => {
           <footer className="footer"></footer>
         </S.container>
       </S.wrapper>
-</div>
+    </div>
   );
 };
 export { Layout };

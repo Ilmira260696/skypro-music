@@ -1,17 +1,19 @@
 import React from "react";
-import *as S  from "./ItemTracksStyle";
+import * as S from "./ItemTracksStyle";
 import { useSelector } from "react-redux";
 
 import { useEffect, useState } from "react";
-import {currentTrackSelector,  isPlayingSelector } from "../../store/selectors/track";
+import {
+  currentTrackSelector,
+  isPlayingSelector,
+} from "../../store/selectors/track";
 import { AudioPlayerIcons } from "../AudioPlayerIcons/AudioPlayerIcons";
-import {useSetLikeMutation, useSetDislikeMutation } from "../../serviseQuery/tracks";
-import {setAllTracks} from "../../store/slices/track";
-import { useDispatch } from "react-redux";
+import {
+  useSetLikeMutation,
+  useSetDislikeMutation,
+} from "../../serviseQuery/tracks";
 
-
-export function ItemTracks ({ track, isLoading, isFavorites=false}) {
-  // const dispatch = useDispatch();
+export function ItemTracks({ track, isLoading }) {
   const currentTrack = useSelector(currentTrackSelector);
   const isPlaying = useSelector(isPlayingSelector);
   const [setLike] = useSetLikeMutation();
@@ -24,7 +26,7 @@ export function ItemTracks ({ track, isLoading, isFavorites=false}) {
 
   useEffect(() => {
     if (track?.stared_user) {
-      setIsLiked(isUserLike)
+      setIsLiked(isUserLike);
     } else {
       setIsLiked(true);
     }
@@ -90,21 +92,24 @@ export function ItemTracks ({ track, isLoading, isFavorites=false}) {
       {!isLoading && (
         <S.trackTime>
           <AudioPlayerIcons
-             alt="like"
-             click={() => {
-               toggleLikeDislike(track?.id);
-             }}
-             isActive={isLiked}
+            alt="like"
+            click={() => {
+              toggleLikeDislike(track?.id);
+            }}
+            isActive={isLiked}
           />
-          
-          <S.trackTimeText>  {Math.floor(track.duration_in_seconds / 60) +
+
+          <S.trackTimeText>
+            {" "}
+            {Math.floor(track.duration_in_seconds / 60) +
               ":" +
               (track.duration_in_seconds % 60 < 10
                 ? (track.duration_in_seconds % 60) + "0"
                 : track.duration_in_seconds % 60) ||
               (track.duration_in_seconds % 60 === 0
                 ? "00"
-                : track.duration_in_seconds % 60)}</S.trackTimeText>
+                : track.duration_in_seconds % 60)}
+          </S.trackTimeText>
         </S.trackTime>
       )}
     </S.PlaylistTrack>
