@@ -32,14 +32,8 @@ export async function RegistrationApi(email, password) {
   })
   .then((response) => {
     if (response.status === 400) {
-      // const message = "Failed to fetch";
       return response.json()
-      // .catch(error => alert(error.message))
-      // .catch(error =>alert(`Нет подклчения к интернету. Пожалуйста, проверьте соединение с интернетом и попробуйте перзагрузить страницу`))
       .then((errorResponse) => {
-        // if(error.message === "Failed to fetch"){
-        //   error('Нет подключения к интернету')
-        // }
         if (errorResponse.username) {
           throw new Error(errorResponse.username);
         }
@@ -75,8 +69,6 @@ export async function LoginApi(email, password) {
     }
   })
   .then((response) => {
-    
-   
     if (response.status === 400) {
       return response.json().then((errorResponse) => {
         if (errorResponse.email) {
@@ -95,13 +87,6 @@ export async function LoginApi(email, password) {
     
       
     };
-    // const myError = new Error('Failed to fetch')
-    // console.log(myError.message)
-   
-    // if (!response.ok) {
-    //   const myError = new Error('Failed to fetch')
-    //   throw new Error(myError.message)
-    // }
     return response.json();
   });
 }

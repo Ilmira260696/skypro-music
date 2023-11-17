@@ -16,12 +16,10 @@ export function ItemTracks ({ track, isLoading, isFavorites=false}) {
   const isPlaying = useSelector(isPlayingSelector);
   const [setLike] = useSetLikeMutation();
   const [setDislike] = useSetDislikeMutation();
-  const auth = JSON.parse(localStorage.getItem("user", "id"));
+  const auth = JSON.parse(localStorage.getItem("user"));
   const isUserLike = Boolean(
     track?.stared_user?.find((user) => user.id === auth.id)
   );
-  console.log(auth.id);
- 
   const [isLiked, setIsLiked] = useState(isUserLike);
 
   useEffect(() => {

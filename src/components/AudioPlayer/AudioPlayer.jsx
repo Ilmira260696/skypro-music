@@ -87,6 +87,7 @@ import {useSetLikeMutation,useSetDislikeMutation} from "../../serviseQuery/track
   const auth = JSON.parse(localStorage.getItem("user"));
   const isUserLike = Boolean(currentTrack?.stared_user?.find((user) => user.id === auth.id)
   );
+  console.log(auth.id)
   const [isLiked, setIsLiked] = useState(isUserLike);
   useEffect(() => {
     if (currentTrack?.stared_user) {
